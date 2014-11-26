@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="3.0" group="content" method="upgrade">
+	<name>Integration E-Recht24 Haftungsausschluss und Datenschutzbestimmung</name>
+	<author>CN-Tools | Clemens Neubauer</author>
+	<creationDate>2014-11-26</creationDate>
+	<copyright>Copyright 2014 (C) Clemens Neubauer. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>cn-tools@gmx.at</authorEmail>
+	<authorUrl>https://github.com/cn-tools/</authorUrl>
+	<version>0.0.1</version>
+	<description><![CDATA[<p>Mit diesem Joomla! Plug-In integrieren Sie auf einfachste Art & Weise einen Haftungsausschluss und/oder eine Datenschutzbestimmung in einen Artikel Ihrer Wahl. Die Daten werden dabei "on-the-fly" von der Homepage <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a> geladen.<br /><br /><strong style="color:#F00">Es wird keinerlei Haftung übernommen! Jegliche Gewährleistung ist ausgeschlossen! Die Nutzung erfolgt auf eigene Gefahr!<br />Dies gilt sowohl für den Datenbereitssteller <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a> als auch für den Authos dieses Plug-In's</strong><br /><br />Folgende Parameter sind möglich:<br />standard=1<br />privacy=1<br />facebook=1<br />analytics=1<br />adsense=1<br />plusone=1<br />twitter=1<br />infodelete=1</p><!-- Diese Felder sind derzeit leider nur mit einer kostenpflichtigen Anmeldung beim Anbieter abfragbar<p>cookies=1<br />shops=1<br />onlinecontracts=1<br />newsletter=1</p>--><p>Beispiel:<br />{ERecht24Disclaimer}&amp;standard=1&amp;facebook=1&amp;twitter=1{/ERecht24Disclaimer}</p><p>PS: Dieses Plug-In wird nur auf Deutsch angeboten, da die Texte vom Datenbereitsteller ebenfalls ausschließlich auf Deutsch geliefert werden! ;)</p>]]></description>
+	<files>
+		<filename plugin="plg_cntools_erecht24datenschutz">plg_cntools_erecht24datenschutz.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" label="Proxy-Einstellungen">
+  				<field name="proxy_url" type="text" default="" label="Proxy-Adresse" description="" size="20" />
+  				<field name="proxy_port" type="numeric" default="" label="Proxy-Port" description="" size="20" />
+				<field type="spacer" hr="true" />
+  				<field name="proxy_user" type="text" default="" label="Proxy-User" description="" size="20" />
+  				<field name="proxy_password" type="password" default="" label="Proxy-Passwort" description="Achtung: Das Passwort wird unverschlüsselt gespeichert!" size="20" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>
