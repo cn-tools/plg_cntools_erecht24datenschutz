@@ -8,19 +8,80 @@
 	<authorEmail>cn-tools@gmx.at</authorEmail>
 	<authorUrl>https://github.com/cn-tools/</authorUrl>
 	<version>0.0.1</version>
-	<description><![CDATA[<p>Mit diesem Joomla! Plug-In integrieren Sie auf einfachste Art & Weise einen Haftungsausschluss und/oder eine Datenschutzbestimmung in einen Artikel Ihrer Wahl. Die Daten werden dabei "on-the-fly" von der Homepage <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a> geladen.<br /><br /><strong style="color:#F00">Es wird keinerlei Haftung übernommen! Jegliche Gewährleistung ist ausgeschlossen! Die Nutzung erfolgt auf eigene Gefahr!<br />Dies gilt sowohl für den Datenbereitssteller <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a> als auch für den Authos dieses Plug-In's</strong><br /><br />Folgende Parameter sind möglich:<br />standard=1<br />privacy=1<br />facebook=1<br />analytics=1<br />adsense=1<br />plusone=1<br />twitter=1<br />infodelete=1</p><!-- Diese Felder sind derzeit leider nur mit einer kostenpflichtigen Anmeldung beim Anbieter abfragbar<p>cookies=1<br />shops=1<br />onlinecontracts=1<br />newsletter=1</p>--><p>Beispiel:<br />{ERecht24Disclaimer}&amp;standard=1&amp;facebook=1&amp;twitter=1{/ERecht24Disclaimer}</p><p>PS: Dieses Plug-In wird nur auf Deutsch angeboten, da die Texte vom Datenbereitsteller ebenfalls ausschließlich auf Deutsch geliefert werden! ;)</p>]]></description>
+	
+	<description>
+		<![CDATA[<p>Mit diesem Joomla! Plug-In integrieren Sie auf einfachste Art &amp; Weise einen Haftungsausschluss und/oder eine Datenschutzerklärung in einen Artikel Ihrer Wahl. Die Daten werden dabei "on-the-fly" von der Homepage <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a> geladen.</p>
+<p><strong style="color:#F00">Dieses Plug-In wird &quot;So-Wie-Es-Ist&quot; angeboten und es wird keinerlei Haftung übernommen! Jegliche Gewährleistung ist ausgeschlossen! Die Nutzung erfolgt auf eigene Gefahr!<br />
+  Dies gilt sowohl für den Datenbereitsteller <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a>, als auch für den Author dieses Plug-In's!<br>
+  Der Datenbereitsteller behält sich ausserdem das Recht vor, den Service der Datenbereitstellung ohne jegliche Vorankündigung einzustellen!</strong></p>
+<p>&nbsp;</p>
+<table width="500">
+  <caption><strong>Folgende Parameter sind möglich:</strong>
+  </caption>
+  <tbody>
+    <tr>
+      <td>Disclaimer - Haftung für Inhalte &amp; Links, Urheberrecht:</td>
+      <td>standard=1</td>
+    </tr>
+    <tr>
+      <td>Allgemeine Datenschutzerklärung:</td>
+      <td>privacy=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Facebook:</td>
+      <td>facebook=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Google Analytics:</td>
+      <td>analytics=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Google Adsense:</td>
+      <td>adsense=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Google +1:</td>
+      <td>plusone=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Twitter:</td>
+      <td>twitter=1</td>
+    </tr>
+    <tr>
+      <td>Auskunft, Löschung, Sperrung:</td>
+      <td>infodelete=1</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<p>Beispiel:<br />
+  <code>{ERecht24Datenschutz}&amp;standard=1&amp;facebook=1&amp;twitter=1{/ERecht24Datenschutz}</code></p>
+<p>Sollte Ihnen dieses Plug-In gefallen, würde ich mich freuen, wenn Sie mir eine Getränk spendieren würden...</p>
+<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MDMPWWA3JLRN2" target="_blank"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG_global.gif" alt="PayPal – The safer, easier way to pay online." /></a></p>
+<p>&nbsp;</p>
+<p>PS: Dieses Plug-In wird nur auf Deutsch angeboten, da die Texte vom Datenbereitsteller ebenfalls ausschließlich auf Deutsch geliefert werden! ;)</p><p>&nbsp;</p>]]>
+	</description>
+
 	<files>
 		<filename plugin="plg_cntools_erecht24datenschutz">plg_cntools_erecht24datenschutz.php</filename>
 		<filename>index.html</filename>
 	</files>
+
+	<updateservers>
+		<server type="extension" priority="1" name="plg_cntools_erecht24datenschutz Updates">https://raw.github.com/cn-tools/plg_cntools_erecht24datenschutz/master/updateversion.xml</server>
+	</updateservers>
+
 	<config>
 		<fields name="params">
-			<fieldset name="basic" label="Proxy-Einstellungen">
-  				<field name="proxy_url" type="text" default="" label="Proxy-Adresse" description="" size="20" />
-  				<field name="proxy_port" type="numeric" default="" label="Proxy-Port" description="" size="20" />
-				<field type="spacer" hr="true" />
-  				<field name="proxy_user" type="text" default="" label="Proxy-User" description="" size="20" />
-  				<field name="proxy_password" type="password" default="" label="Proxy-Passwort" description="Achtung: Das Passwort wird unverschlüsselt gespeichert!" size="20" />
+			<fieldset name="basis" label="Basiseinstellungen">
+				<field name="plg_cntools_e24d_fallback" type="editor" buttons="true" label="Rückfallsebenentext:" description="Sollte einmal der Dienst des Datenbereitsstellers nicht zur Verfügung stehen, wird der hier hinterlegte Text genutzt." class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+				<field name="basic_hidden1" type="hidden" default="" />
+			</fieldset>
+			<fieldset name="error" label="Errorreporting">
+				<field name="plg_cntools_e24d_erroremail" type="email" label="Fehleremailadresse:" description="Hinterlegen Sie hier eine Emailadresse, an welche eine Meldung gesendet werden soll, wenn die On-The-Fly-Datenermittlung nicht funktioniert hat. Beachten Sie bitte, dass Sie bei jedem Aufruf eines Artikels wo dieses Plug-In genutzt wird je Integrationstext '{ERecht24Datenschutz}' ein Email erhalten! " required="false" size="30" validate="email" />
+				<field name="plg_cntools_e24d_erroremail_subject" type="text" label="Emailbetreff:" description="Betreff der Fehlermail" required="false" size="30" />
+				<field name="plg_cntools_e24d_erroremail_body" type="textarea" label="Emailtext:" description="Text der Fehlermail" rows="3" cols="40"/>
+				<field name="basic_hidden2" type="hidden" default="" />
 			</fieldset>
 		</fields>
 	</config>

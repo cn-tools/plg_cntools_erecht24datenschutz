@@ -24,24 +24,18 @@ JHtml::_('jquery.framework');
 class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 	function plgContentPlg_CNTools_ERecht24Datenschutz( &$subject, $config ){
 		parent::__construct( $subject, $config );
-
-		// load plugin parameters
-//		$this->_plugin = &JPluginHelper::getPlugin( 'content', 'plg_cntools_erecht24datenschutz' );
 	}
 
 	function onContentPrepare($context, &$article, &$params, $page = 0){
-//		JPlugin::loadLanguage( 'plg_content_ERecht24Disclaimer', JPATH_ADMINISTRATOR );		//Load the plugin language file - not in contructor in case plugin called by third party components
-//		$application = &JFactory::getApplication();
-
-		$regex = "#{ERecht24Disclaimer\b(.*?)\}(.*?){/ERecht24Disclaimer}#s";
+		$regex = "#{ERecht24Datenschutz\b(.*?)\}(.*?){/ERecht24Datenschutz}#s";
 
 		$article->text = preg_replace_callback( $regex, array('plgContentPlg_CNTools_ERecht24Datenschutz', 'render'), $article->text, -1, $count );
 	}
 
 	function render(&$matches){
 		$lValue = htmlspecialchars_decode($matches[0]);
-		$lValue = substr($lValue, 20);
-		$lValue = substr($lValue, 0, strlen($lValue)-21);
+		$lValue = substr($lValue, 21);
+		$lValue = substr($lValue, 0, strlen($lValue)-22);
 		$lResult = plgContentPlg_CNTools_ERecht24Datenschutz::addContent($lValue);
 
 		return $lResult;
@@ -62,7 +56,29 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 			} 			
 
 			if ((!isset($stringJSONFull)) or ($stringJSONFull[0]!='{')){
-				$lResult = '<p>Der Haftungsausschluss und/oder die Datenschutzerklärung von <a target="_blank" href="http://www.e-recht24.de">www.e-recht24.de</a> steht derzeit nicht zur Verfügung!</p><p>Sollte dieses Problem länger bestehen, kontaktieren Sie bitte den Betreiber dieser Homepage!</p>';
+				$lDef = '<p>Der Haftungsausschluss und/oder die Datenschutzerklärung von <a target="_blank" href="http://www.e-recht24.de">www.e-recht24.de</a> steht derzeit nicht zur Verfügung!</p><p>Sollte dieses Problem länger bestehen, kontaktieren Sie bitte den Betreiber dieser Homepage!</p>';
+				$lResult = $this->params->get('plg_cntools_e24d_fallback', $lDef);
+
+				try
+				{
+					$lErrorEmail = $this->params->get('plg_cntools_e24d_erroremail');
+					if ($lErrorEmail != ''){
+						$config = JFactory::getConfig();
+						$send = JFactory::getMailer()->sendMail($config->getValue('config.mailfrom'), 
+														$config->getValue('config.fromname'), 
+														$lErrorEmail, 
+														$this->params->get('plg_cntools_e24d_erroremail_subject').' ('.$config->getValue('config.sitename').')', 
+														$this->params->get('plg_cntools_e24d_erroremail_body')
+														);
+						print_r($send);
+						die();
+					}
+				}
+				catch (Exception $e)
+				{
+					//$stringJSONFull = null;
+					//JExit();
+				} 			
 			} else {
 				$stringJSONReady = json_decode($stringJSONFull);
 				$lResult = $stringJSONReady->{'disclaimerpreview'};
