@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * ERecht24Disclaimer - Joomla Plugin
  *
@@ -40,6 +40,20 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 
 		return $lResult;
 	}
+	
+	private function GetRueckfallText($phrase, $txt, $param){
+		$lResult = '';
+		
+		$pos = strpos($phrase, $txt);
+		if ($pos <> false) {
+			$lText = trim($this->params->get($param));
+			if ($lText<>'') {
+				$lResult .= '<p>'.$lText.'</p>';
+			}
+		}
+		
+		return $lResult;
+	}
 
 	function addContent($phrase) {
 		$lResult = '';
@@ -56,8 +70,29 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 			} 			
 
 			if ((!isset($stringJSONFull)) or ($stringJSONFull[0]!='{')){
-				$lDef = '<p>Der Haftungsausschluss und/oder die Datenschutzerklärung von <a target="_blank" href="http://www.e-recht24.de">www.e-recht24.de</a> steht derzeit nicht zur Verfügung!</p><p>Sollte dieses Problem länger bestehen, kontaktieren Sie bitte den Betreiber dieser Homepage!</p>';
-				$lResult = $this->params->get('plg_cntools_e24d_fallback', $lDef);
+				$lResult = trim($this->params->get('plg_cntools_e24d_fallback'));
+				if ($lResult<>''){
+					$lResult = '<p>'.$lResult.'</p>';
+				}
+				
+				$lResult .= $this->GetRueckfallText($phrase, 'standard=1', 'plg_cntools_e24d_fallback_standard');
+				$lResult .= $this->GetRueckfallText($phrase, 'privacy=1', 'plg_cntools_e24d_fallback_privacy');
+				$lResult .= $this->GetRueckfallText($phrase, 'facebook=1', 'plg_cntools_e24d_fallback_facebook');
+				$lResult .= $this->GetRueckfallText($phrase, 'analytics=1', 'plg_cntools_e24d_fallback_analytics');
+				$lResult .= $this->GetRueckfallText($phrase, 'adsense=1', 'plg_cntools_e24d_fallback_adsense');
+				$lResult .= $this->GetRueckfallText($phrase, 'plusone=1', 'plg_cntools_e24d_fallback_plusone');
+				$lResult .= $this->GetRueckfallText($phrase, 'twitter=1', 'plg_cntools_e24d_fallback_twitter');
+				$lResult .= $this->GetRueckfallText($phrase, 'infodelete=1', 'plg_cntools_e24d_fallback_infodelete');
+				
+				$lTxt = trim($this->params->get('plg_cntools_e24d_fallback_bottom'));
+				if ($lTxt<>''){
+					$lResult .= '<p>'.$lTxt.'</p>';
+				}
+				
+				$lResult = trim($lResult);
+				if ($lResult == '') {
+					$lResult = '<p>Der Haftungsausschluss und/oder die Datenschutzerklärung von <a target="_blank" href="http://www.e-recht24.de">www.e-recht24.de</a> steht derzeit nicht zur Verfügung!</p><p>Sollte dieses Problem länger bestehen, kontaktieren Sie bitte den Betreiber dieser Homepage!</p>';
+				}
 
 				$lErrorEmail = $this->params->get('plg_cntools_e24d_erroremail');
 				if ($lErrorEmail != ''){
