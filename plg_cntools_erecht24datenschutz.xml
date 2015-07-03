@@ -7,16 +7,28 @@
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
 	<authorEmail>cn-tools@gmx.at</authorEmail>
 	<authorUrl>https://github.com/cn-tools/</authorUrl>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 	
 	<description>
-		<![CDATA[<p>Mit diesem Joomla! Plug-In integrieren Sie auf einfachste Art &amp; Weise einen Haftungsausschluss und/oder eine Datenschutzerklärung in einen Artikel Ihrer Wahl. Die Daten werden dabei "on-the-fly" von der Homepage <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a> geladen.</p>
+		<![CDATA[<p>Mit diesem Joomla! Plug-In integrieren Sie auf einfachste Art &amp; Weise einen Haftungsausschluss und/oder eine Datenschutzerklärung in einem Artikel Ihrer Wahl. Die Daten werden dabei "on-the-fly" von der Homepage <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a> geladen.</p>
+<table width="75%">
+  <tbody>
+    <tr>
+      <td><img src="../plugins/content/plg_cntools_erecht24datenschutz/images/attention.gif" /></td>
+      <td><ol>
+          <li>Die Datenschutzerklärung ist ein allgemeines Muster. Der Datenbereitsteller übernimmt keine Haftung dafür, dass das Muster alle relevanten Punkte auf Ihrer Website abdeckt. <a target="_blank" href="http://seiten.e-recht24.de/widerruf/">Eine individuelle Datenschutzerklärung mit anwaltlicher Haftung für Online Shops, eBay und Amazon finden Sie hier.</a></li>
+          <li>Binden Sie die Datenschutzerklärung auf Ihrer Seite unter einem eigenen Menüpunkt „Datenschutz“ ein.</li>
+          <li id="shopwarning" style="display: list-item;">Wenn Sie einen Online Shop betreiben, auf Ihrer Website Verträge abschließen oder persönliche Daten (Name, E-Mail-Adresse) abfragen, können Sie diese Erklärung nicht nutzen.</li>
+        </ol></td>
+    </tr>
+  </tbody>
+</table>
 <p><strong style="color:#F00">Dieses Plug-In wird &quot;So-Wie-Es-Ist&quot; angeboten und es wird keinerlei Haftung übernommen! Jegliche Gewährleistung ist ausgeschlossen! Die Nutzung erfolgt auf eigene Gefahr!<br />
   Dies gilt sowohl für den Datenbereitsteller <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a>, als auch für den Author dieses Plug-In's!<br>
   Der Datenbereitsteller behält sich ausserdem das Recht vor, den Service der Datenbereitstellung ohne jegliche Vorankündigung einzustellen!</strong></p>
-<p>&nbsp;</p>
 <table width="500">
-  <caption><strong>Folgende Parameter sind möglich:</strong>
+  <caption>
+  <strong>Folgende Parameter sind möglich:</strong>
   </caption>
   <tbody>
     <tr>
@@ -36,35 +48,85 @@
       <td>analytics=1</td>
     </tr>
     <tr>
+      <td>Datenschutzerklärung für Google +1:</td>
+      <td>plusone=1</td>
+    </tr>
+    <tr style="color:#888888">
       <td>Datenschutzerklärung für Google Adsense:</td>
       <td>adsense=1</td>
     </tr>
+    <tr style="color:#888888">
+      <td>Datenschutzerklärung für Google Analytics Remarketing:</td>
+      <td>remarketing=1</td>
+    </tr>
     <tr>
-      <td>Datenschutzerklärung für Google +1:</td>
-      <td>plusone=1</td>
+      <td>Datenschutzerklärung für etracker:</td>
+      <td>etracker=1</td>
     </tr>
     <tr>
       <td>Datenschutzerklärung für Twitter:</td>
       <td>twitter=1</td>
     </tr>
     <tr>
-      <td>Auskunft, Löschung, Sperrung:</td>
+      <td>Datenschutzerklärung für Xing:</td>
+      <td>xing=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Pinterest:</td>
+      <td>pinterest=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Tumblr:</td>
+      <td>tumblr=1</td>
+    </tr>
+    <tr style="color:#888888">
+      <td>Datenschutzerklärung für Amazon Partnerprogramm:</td>
+      <td>amazon=1</td>
+    </tr>
+    <tr>
+      <td>Hinweis zu Auskunft, Löschung, Sperrung:</td>
       <td>infodelete=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Server-Log-Dateien:</td>
+      <td>remarketing=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Cookies:</td>
+      <td>cookies=1</td>
+    </tr>
+    <tr style="color:#888888">
+      <td>Datenschutzerklärung für Kontaktformular:</td>
+      <td>contactforms=1</td>
+    </tr>
+    <tr style="color:#888888">
+      <td>Widerspruch gegen Werbe-E-Mails:</td>
+      <td>advertemails=1</td>
+    </tr>
+    <tr style="color:#888888">
+      <td>Datenschutzerklärung für Newsletterversand:</td>
+      <td>newsletter=1</td>
+    </tr>
+    <tr style="color:#888888">
+      <td>Datenschutzerklärung für Nutzerregistrierung:</td>
+      <td>registration=1</td>
     </tr>
   </tbody>
 </table>
-<p>&nbsp;</p>
+Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit einer gültigen Mitgliedschaft beim Datenbreitsteller abrufbar und können derzeit <span style="color: #FF0004; font-weight: bold;">nicht</span> mit Hilfe dieses Plug-In's abgefragt werden.
 <p>Beispiel:<br />
   {ERecht24Datenschutz}&amp;standard=1&amp;facebook=1&amp;twitter=1{/ERecht24Datenschutz}</p>
 <p>Sollte Ihnen dieses Plug-In gefallen, würde ich mich freuen, wenn Sie mir eine Getränk spendieren würden...</p>
 <p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MDMPWWA3JLRN2" target="_blank"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG_global.gif" alt="PayPal – The safer, easier way to pay online." /></a></p>
 <p>&nbsp;</p>
-<p>PS: Dieses Plug-In wird nur auf Deutsch angeboten, da die Texte vom Datenbereitsteller ebenfalls ausschließlich auf Deutsch geliefert werden! ;)</p><p>&nbsp;</p>]]>
+<p>PS: Dieses Plug-In wird nur auf Deutsch angeboten, da die Texte vom Datenbereitsteller ebenfalls ausschließlich auf Deutsch geliefert werden! ;)</p>
+<p>&nbsp;</p>]]>
 	</description>
 
 	<files>
 		<filename plugin="plg_cntools_erecht24datenschutz">plg_cntools_erecht24datenschutz.php</filename>
 		<filename>index.html</filename>
+		<folder>images</folder>
 	</files>
 
 	<updateservers>
@@ -91,18 +153,77 @@
 			<fieldset name="analytics" label="Google Analytics">
 				<field name="plg_cntools_e24d_fallback_analytics" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
+			<fieldset name="plusone" label="Google +1">
+				<field name="plg_cntools_e24d_fallback_plusone" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+<!--
 			<fieldset name="adsense" label="Google Adsense">
 				<field name="plg_cntools_e24d_fallback_adsense" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
-			<fieldset name="plusone" label="Google +1">
-				<field name="plg_cntools_e24d_fallback_plusone" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+-->
+<!--
+			<fieldset name="remarketing" label="Google Analytics Remarketing">
+				<field name="plg_cntools_e24d_fallback_remarketing" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+-->
+			<fieldset name="etracker" label="etracker">
+				<field name="plg_cntools_e24d_fallback_etracker" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 			<fieldset name="twitter" label="Twitter">
 				<field name="plg_cntools_e24d_fallback_twitter" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
+			<fieldset name="xing" label="Xing">
+				<field name="plg_cntools_e24d_fallback_xing" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="pinterest" label="Pinterest">
+				<field name="plg_cntools_e24d_fallback_pinterest" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="tumblr" label="Tumblr">
+				<field name="plg_cntools_e24d_fallback_tumblr" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+<!--
+			<fieldset name="amazon" label="Amazon Partnerprogramm">
+				<field name="plg_cntools_e24d_fallback_amazon" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+-->
 			<fieldset name="infodelete" label="Auskunft, Löschung, Sperrung">
 				<field name="plg_cntools_e24d_fallback_infodelete" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
+			<fieldset name="serverlogfiles" label="Server-Log-Dateien">
+				<field name="plg_cntools_e24d_fallback_serverlogfiles" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="cookies" label="Cookies">
+				<field name="plg_cntools_e24d_fallback_cookies" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="contactform" label="Kontaktformular">
+				<field name="plg_cntools_e24d_fallback_contactform" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="advertemail" label="Werbe-E-Mails">
+				<field name="plg_cntools_e24d_fallback_advertemail" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="newsletter" label="Newsletter">
+				<field name="plg_cntools_e24d_fallback_newsletter" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+<!--			
+			<fieldset name="registration" label="Nutzerregistrierung">
+				<field name="plg_cntools_e24d_fallback_registration" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+-->
+<!--
+			<fieldset name="shops" label="Datenübermittlung - Online-Shops & Händler (mit Warenversand)">
+				<field name="plg_cntools_e24d_fallback_shops" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+-->
+<!--
+			<fieldset name="onlinecontracts" label="Datenübermittlung - Dienstleister, die online Verträge schließen (ohne Warenversand)">
+				<field name="plg_cntools_e24d_fallback_onlinecontracts" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+-->
+<!--
+			<fieldset name="dataprocessing" label="atenschutzerklärung zum Verarbeiten von Kunden- und Vertragsdaten">
+				<field name="plg_cntools_e24d_fallback_dataprocessing" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+-->
 			<fieldset name="error" label="Errorreporting">
 				<field name="plg_cntools_e24d_erroremail" type="email" label="Fehleremailadresse:" description="Hinterlegen Sie hier eine Emailadresse, an welche eine Meldung gesendet werden soll, wenn die On-The-Fly-Datenermittlung nicht funktioniert hat. Beachten Sie bitte, dass Sie bei jedem Aufruf eines Artikels wo dieses Plug-In genutzt wird je Integrationstext '{ERecht24Datenschutz}' ein Email erhalten! " required="false" size="30" validate="email" />
 				<field name="plg_cntools_e24d_erroremail_subject" type="text" label="Emailbetreff:" description="Betreff der Fehlermail" required="false" size="30" />

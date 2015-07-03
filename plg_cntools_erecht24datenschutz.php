@@ -22,26 +22,29 @@ jimport('joomla.plugin.plugin');
 JHtml::_('jquery.framework');
 
 class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
+	//------------------------------------------------------------------------
 	function plgContentPlg_CNTools_ERecht24Datenschutz( &$subject, $config ){
 		parent::__construct( $subject, $config );
 	}
-
+	//------------------------------------------------------------------------
 	function onContentPrepare($context, &$article, &$params, $page = 0){
 		$regex = "#{ERecht24Datenschutz\b(.*?)\}(.*?){/ERecht24Datenschutz}#s";
 
 		$article->text = preg_replace_callback( $regex, array('plgContentPlg_CNTools_ERecht24Datenschutz', 'render'), $article->text, -1, $count );
 	}
-
+	//------------------------------------------------------------------------
 	function render(&$matches){
 		$lValue = htmlspecialchars_decode($matches[0]);
 		$lValue = substr($lValue, 21);
 		$lValue = substr($lValue, 0, strlen($lValue)-22);
-		$lResult = plgContentPlg_CNTools_ERecht24Datenschutz::addContent($lValue);
+		$lResult = $this->addContent($lValue);
 
 		return $lResult;
 	}
-	
-	private function GetRueckfallText($phrase, $txt, $param){
+	//------------------------------------------------------------------------
+	private function GetRueckfallText($phrase, $txt){
+		$param = 'plg_cntools_e24d_fallback_' + $txt;
+		$txt .= '=1';
 		$lResult = '';
 		
 		$pos = strpos($phrase, $txt);
@@ -54,7 +57,7 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 		
 		return $lResult;
 	}
-
+	//------------------------------------------------------------------------
 	function addContent($phrase) {
 		$lResult = '';
 		if ($phrase!=''){
@@ -75,14 +78,29 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 					$lResult = '<p>'.$lResult.'</p>';
 				}
 				
-				$lResult .= $this->GetRueckfallText($phrase, 'standard=1', 'plg_cntools_e24d_fallback_standard');
-				$lResult .= $this->GetRueckfallText($phrase, 'privacy=1', 'plg_cntools_e24d_fallback_privacy');
-				$lResult .= $this->GetRueckfallText($phrase, 'facebook=1', 'plg_cntools_e24d_fallback_facebook');
-				$lResult .= $this->GetRueckfallText($phrase, 'analytics=1', 'plg_cntools_e24d_fallback_analytics');
-				$lResult .= $this->GetRueckfallText($phrase, 'adsense=1', 'plg_cntools_e24d_fallback_adsense');
-				$lResult .= $this->GetRueckfallText($phrase, 'plusone=1', 'plg_cntools_e24d_fallback_plusone');
-				$lResult .= $this->GetRueckfallText($phrase, 'twitter=1', 'plg_cntools_e24d_fallback_twitter');
-				$lResult .= $this->GetRueckfallText($phrase, 'infodelete=1', 'plg_cntools_e24d_fallback_infodelete');
+				$lResult .= $this->GetRueckfallText($phrase, 'standard');
+				$lResult .= $this->GetRueckfallText($phrase, 'privacy');
+				$lResult .= $this->GetRueckfallText($phrase, 'facebook');
+				$lResult .= $this->GetRueckfallText($phrase, 'analytics');
+				$lResult .= $this->GetRueckfallText($phrase, 'plusone');
+				//$lResult .= $this->GetRueckfallText($phrase, 'adsense');
+				//$lResult .= $this->GetRueckfallText($phrase, 'remarketing');
+				$lResult .= $this->GetRueckfallText($phrase, 'etracker');
+				$lResult .= $this->GetRueckfallText($phrase, 'twitter');
+				$lResult .= $this->GetRueckfallText($phrase, 'xing');
+				$lResult .= $this->GetRueckfallText($phrase, 'pinterest');
+				$lResult .= $this->GetRueckfallText($phrase, 'tumblr');
+				//$lResult .= $this->GetRueckfallText($phrase, 'amazon');
+				$lResult .= $this->GetRueckfallText($phrase, 'infodelete');
+				$lResult .= $this->GetRueckfallText($phrase, 'serverlogfiles');
+				$lResult .= $this->GetRueckfallText($phrase, 'cookies');
+				$lResult .= $this->GetRueckfallText($phrase, 'contactform');
+				$lResult .= $this->GetRueckfallText($phrase, 'advertemail');
+				$lResult .= $this->GetRueckfallText($phrase, 'newsletter');
+				//$lResult .= $this->GetRueckfallText($phrase, 'registration');
+				//$lResult .= $this->GetRueckfallText($phrase, 'shops');
+				//$lResult .= $this->GetRueckfallText($phrase, 'onlinecontracts');
+				//$lResult .= $this->GetRueckfallText($phrase, 'dataprocessing');
 				
 				$lTxt = trim($this->params->get('plg_cntools_e24d_fallback_bottom'));
 				if ($lTxt<>''){
