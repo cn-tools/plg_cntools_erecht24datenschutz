@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="plugin" version="3.0" group="content" method="upgrade">
-	<name>Content - CNTools Integration E-Recht24 Haftungsausschluss und Datenschutzbestimmung</name>
+	<name>Content - CNTools - Integration E-Recht24 Haftungsausschluss und Datenschutzbestimmung</name>
 	<author>CN-Tools | Clemens Neubauer</author>
 	<creationDate>2014-11-26</creationDate>
 	<copyright>Copyright 2014 (C) Clemens Neubauer. All rights reserved.</copyright>
