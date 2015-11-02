@@ -16,7 +16,7 @@ plg_cntools_erecht24datenschutz
 <p><strong style="color:#F00">Dieses Plug-In wird &quot;So-Wie-Es-Ist&quot; angeboten und es wird keinerlei Haftung übernommen! Jegliche Gewährleistung ist ausgeschlossen! Die Nutzung erfolgt auf eigene Gefahr!<br />
   Dies gilt sowohl für den Datenbereitsteller <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a>, als auch für den Author dieses Plug-In's!<br>
   Der Datenbereitsteller behält sich ausserdem das Recht vor, den Service der Datenbereitstellung ohne jegliche Vorankündigung einzustellen!</strong></p>
-<table width="500">
+<table>
   <caption>
   <strong>Folgende Parameter sind möglich:</strong>
   </caption>
@@ -79,27 +79,39 @@ plg_cntools_erecht24datenschutz
     </tr>
     <tr>
       <td>Datenschutzerklärung für Server-Log-Dateien:</td>
-      <td>remarketing=1</td>
+      <td>serverlogfiles=1</td>
     </tr>
     <tr>
       <td>Datenschutzerklärung für Cookies:</td>
       <td>cookies=1</td>
     </tr>
-    <tr style="color:#888888">
+    <tr>
       <td>Datenschutzerklärung für Kontaktformular:</td>
       <td>contactforms=1</td>
     </tr>
-    <tr style="color:#888888">
+    <tr>
       <td>Widerspruch gegen Werbe-E-Mails:</td>
       <td>advertemails=1</td>
     </tr>
-    <tr style="color:#888888">
+    <tr>
       <td>Datenschutzerklärung für Newsletterversand:</td>
       <td>newsletter=1</td>
     </tr>
     <tr style="color:#888888">
       <td>Datenschutzerklärung für Nutzerregistrierung:</td>
       <td>registration=1</td>
+    </tr>
+    <tr style="color:#888888">
+      <td>Datenübermittlung - Online-Shops & Händler (mit Warenversand):</td>
+      <td>shops=1</td>
+    </tr>
+    <tr style="color:#888888">
+      <td>Datenübermittlung - Dienstleister, die online Verträge schließen (ohne Warenversand):</td>
+      <td>onlinecontracts=1</td>
+    </tr>
+    <tr style="color:#888888">
+      <td>Datenschutzerklärung zum Verarbeiten von Kunden- und Vertragsdaten:</td>
+      <td>dataprocessing=1</td>
     </tr>
   </tbody>
 </table>
