@@ -42,11 +42,11 @@ plg_cntools_erecht24datenschutz
       <td>plusone=1</td>
     </tr>
     <tr style="color:#888888">
-      <td>Datenschutzerklärung für Google Adsense:</td>
+      <td>Datenschutzerklärung für Google Adsense*:</td>
       <td>adsense=1</td>
     </tr>
     <tr style="color:#888888">
-      <td>Datenschutzerklärung für Google Analytics Remarketing:</td>
+      <td>Datenschutzerklärung für Google Analytics Remarketing*:</td>
       <td>remarketing=1</td>
     </tr>
     <tr>
@@ -70,7 +70,7 @@ plg_cntools_erecht24datenschutz
       <td>tumblr=1</td>
     </tr>
     <tr style="color:#888888">
-      <td>Datenschutzerklärung für Amazon Partnerprogramm:</td>
+      <td>Datenschutzerklärung für Amazon Partnerprogramm*:</td>
       <td>amazon=1</td>
     </tr>
     <tr>
@@ -98,24 +98,24 @@ plg_cntools_erecht24datenschutz
       <td>newsletter=1</td>
     </tr>
     <tr style="color:#888888">
-      <td>Datenschutzerklärung für Nutzerregistrierung:</td>
+      <td>Datenschutzerklärung für Nutzerregistrierung*:</td>
       <td>registration=1</td>
     </tr>
     <tr style="color:#888888">
-      <td>Datenübermittlung - Online-Shops & Händler (mit Warenversand):</td>
+      <td>Datenübermittlung - Online-Shops & Händler (mit Warenversand)*:</td>
       <td>shops=1</td>
     </tr>
     <tr style="color:#888888">
-      <td>Datenübermittlung - Dienstleister, die online Verträge schließen (ohne Warenversand):</td>
+      <td>Datenübermittlung - Dienstleister, die online Verträge schließen (ohne Warenversand)*:</td>
       <td>onlinecontracts=1</td>
     </tr>
     <tr style="color:#888888">
-      <td>Datenschutzerklärung zum Verarbeiten von Kunden- und Vertragsdaten:</td>
+      <td>Datenschutzerklärung zum Verarbeiten von Kunden- und Vertragsdaten*:</td>
       <td>dataprocessing=1</td>
     </tr>
   </tbody>
 </table>
-<p>Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit einer gültigen Mitgliedschaft beim Datenbreitsteller abrufbar und können derzeit <span style="color: #FF0004; font-weight: bold;">nicht</span> mit Hilfe dieses Plug-In's abgefragt werden.</p>
+<p>Die mit einem Stern markierten und <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit einer gültigen Mitgliedschaft beim Datenbreitsteller abrufbar und können derzeit <span style="color: #FF0004; font-weight: bold;">nicht</span> mit Hilfe dieses Plug-In's abgefragt werden.</p>
 <p>Updatehinweise:</p>
 <ul>
   <li>Mit dem Update auf v0.0.4 hat der Datenbereitsteller das Angebot für Google Adsense geändert. Seither ist dieser Punkt nur noch bei gültiger Mitgliedschaft abfragbar und steht somit mit diesem Plug-In nicht mehr zur Verfügung</li>
