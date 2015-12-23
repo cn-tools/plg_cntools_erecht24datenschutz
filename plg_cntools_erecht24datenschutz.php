@@ -89,6 +89,8 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 				$lResult .= $this->GetRueckfallText($phrase, 'etracker');
 				$lResult .= $this->GetRueckfallText($phrase, 'twitter');
 				$lResult .= $this->GetRueckfallText($phrase, 'xing');
+				$lResult .= $this->GetRueckfallText($phrase, 'instagram');
+				$lResult .= $this->GetRueckfallText($phrase, 'linkedin');
 				$lResult .= $this->GetRueckfallText($phrase, 'pinterest');
 				$lResult .= $this->GetRueckfallText($phrase, 'tumblr');
 				//$lResult .= $this->GetRueckfallText($phrase, 'amazon');
