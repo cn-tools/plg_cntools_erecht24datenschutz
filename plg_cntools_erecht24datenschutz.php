@@ -64,7 +64,8 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 			$http = JHttpFactory::getHttp(); 
 			try
 			{
-				$response = $http->get('http://www.e-recht24.de/plugins/content/disclaimermaker/dmaker.php?'.$phrase, null, 6);
+				$response = $http->get('http://www.e-recht24.de/plugins/content/disclaimermaker/assets/dmaker.php?'.$phrase, null, 6);
+				
 				$stringJSONFull = $response->body; 
 			}
 			catch (Exception $e)
