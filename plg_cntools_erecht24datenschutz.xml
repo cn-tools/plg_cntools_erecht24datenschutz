@@ -246,7 +246,7 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 			</fieldset>
 -->
 <!--
-			<fieldset name="dataprocessing" label="atenschutzerklärung zum Verarbeiten von Kunden- und Vertragsdaten">
+			<fieldset name="dataprocessing" label="Datenschutzerklärung zum Verarbeiten von Kunden- und Vertragsdaten">
 				<field name="plg_cntools_e24d_fallback_dataprocessing" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 -->
