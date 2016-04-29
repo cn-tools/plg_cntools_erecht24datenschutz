@@ -7,7 +7,7 @@
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
 	<authorEmail>cn-tools@gmx.at</authorEmail>
 	<authorUrl>https://github.com/cn-tools/</authorUrl>
-	<version>0.0.7</version>
+	<version>0.0.8</version>
 	
 	<description>
 		<![CDATA[<p>Mit diesem Joomla! Plug-In integrieren Sie auf einfachste Art &amp; Weise einen Haftungsausschluss und/oder eine Datenschutzerklärung in einem Artikel Ihrer Wahl. Die Daten werden dabei "on-the-fly" von der Homepage <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a> geladen.</p>
@@ -23,9 +23,10 @@
     </tr>
   </tbody>
 </table>
-<p><strong style="color:#F00">Dieses Plug-In wird &quot;So-Wie-Es-Ist&quot; angeboten und es wird keinerlei Haftung übernommen! Jegliche Gewährleistung ist ausgeschlossen! Die Nutzung erfolgt auf eigene Gefahr!<br />
+<p><strong style="color:#F00">Dieses Plug-In wird &quot;So-Wie-Es-Ist&quot; angeboten und es wird keinerlei Haftung übernommen! Jegliche Gewährleistung ist ausgeschlossen! Die Nutzung der generierten Texte/Dokumente erfolgt auf eigene Gefahr und eigenes Risiko!<br />
   Dies gilt sowohl für den Datenbereitsteller <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a>, als auch für den Author dieses Plug-In's!<br>
-  Der Datenbereitsteller behält sich ausserdem das Recht vor, den Service der Datenbereitstellung ohne jegliche Vorankündigung einzustellen!</strong></p>
+  Der Datenbereitsteller behält sich ausserdem das Recht vor, den Service der Datenbereitstellung ohne jegliche Vorankündigung einzustellen!</strong><br />
+  Mit der Verwendung dieses Plug-Ins stimmen Sie diesen Bedingungen zu!</p>
 <table>
   <caption>
   <strong>Folgende Parameter sind möglich:</strong>
@@ -40,36 +41,44 @@
       <td>privacy=1</td>
     </tr>
     <tr>
-      <td>Datenschutzerklärung für Facebook:</td>
-      <td>facebook=1</td>
+      <td>Datenschutzerklärung für Cookies:</td>
+      <td>cookies=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Server-Log-Dateien:</td>
+      <td>serverlogfiles=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Kontaktformular:</td>
+      <td>contactforms=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Newsletterversand:</td>
+      <td>newsletter=1</td>
     </tr>
     <tr>
       <td>Datenschutzerklärung für Google Analytics:</td>
       <td>analytics=1</td>
     </tr>
     <tr>
-      <td>Datenschutzerklärung für Google +1:</td>
-      <td>plusone=1</td>
-    </tr>
-    <tr style="color:#888888">
-      <td>Datenschutzerklärung für Google Adsense:</td>
-      <td>adsense=1</td>
-    </tr>
-    <tr style="color:#888888">
-      <td>Datenschutzerklärung für Google Analytics Remarketing:</td>
-      <td>remarketing=1</td>
-    </tr>
-    <tr>
       <td>Datenschutzerklärung für etracker:</td>
       <td>etracker=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Piwik:</td>
+      <td>piwik=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Facebook:</td>
+      <td>facebook=1</td>
     </tr>
     <tr>
       <td>Datenschutzerklärung für Twitter:</td>
       <td>twitter=1</td>
     </tr>
     <tr>
-      <td>Datenschutzerklärung für Xing:</td>
-      <td>xing=1</td>
+      <td>Datenschutzerklärung für Google +1:</td>
+      <td>plusone=1</td>
     </tr>
     <tr>
       <td>Datenschutzerklärung für Instagram:</td>
@@ -84,40 +93,36 @@
       <td>pinterest=1</td>
     </tr>
     <tr>
+      <td>Datenschutzerklärung für Xing:</td>
+      <td>xing=1</td>
+    </tr>
+    <tr>
       <td>Datenschutzerklärung für Tumblr:</td>
       <td>tumblr=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für YouTube:</td>
+      <td>youtube=1</td>
+    </tr>
+    <tr style="color:#888888">
+      <td>Datenschutzerklärung für Google Adsense:</td>
+      <td>adsense=1</td>
+    </tr>
+    <tr style="color:#888888">
+      <td>Datenschutzerklärung für Google Analytics Remarketing:</td>
+      <td>remarketing=1</td>
     </tr>
     <tr style="color:#888888">
       <td>Datenschutzerklärung für Amazon Partnerprogramm:</td>
       <td>amazon=1</td>
     </tr>
-    <tr>
-      <td>Hinweis zu Auskunft, Löschung, Sperrung:</td>
-      <td>infodelete=1</td>
-    </tr>
-    <tr>
-      <td>Datenschutzerklärung für Server-Log-Dateien:</td>
-      <td>serverlogfiles=1</td>
-    </tr>
-    <tr>
-      <td>Datenschutzerklärung für Cookies:</td>
-      <td>cookies=1</td>
-    </tr>
-    <tr>
-      <td>Datenschutzerklärung für Kontaktformular:</td>
-      <td>contactforms=1</td>
-    </tr>
-    <tr>
-      <td>Widerspruch gegen Werbe-E-Mails:</td>
-      <td>advertemails=1</td>
-    </tr>
-    <tr>
-      <td>Datenschutzerklärung für Newsletterversand:</td>
-      <td>newsletter=1</td>
-    </tr>
     <tr style="color:#888888">
       <td>Datenschutzerklärung für Nutzerregistrierung:</td>
       <td>registration=1</td>
+    </tr>
+    <tr style="color:#888888">
+      <td>Datenschutzerklärung zum Verarbeiten von Kunden- und Vertragsdaten:</td>
+      <td>dataprocessing=1</td>
     </tr>
     <tr style="color:#888888">
       <td>Datenübermittlung - Online-Shops & Händler (mit Warenversand):</td>
@@ -127,9 +132,13 @@
       <td>Datenübermittlung - Dienstleister, die online Verträge schließen (ohne Warenversand):</td>
       <td>onlinecontracts=1</td>
     </tr>
-    <tr style="color:#888888">
-      <td>Datenschutzerklärung zum Verarbeiten von Kunden- und Vertragsdaten:</td>
-      <td>dataprocessing=1</td>
+    <tr>
+      <td>Hinweis zu Auskunft, Löschung, Sperrung:</td>
+      <td>infodelete=1</td>
+    </tr>
+    <tr>
+      <td>Widerspruch gegen Werbe-E-Mails:</td>
+      <td>advertemails=1</td>
     </tr>
   </tbody>
 </table>
@@ -159,9 +168,16 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 		<fields name="params">
 			<fieldset name="basis" label="Basiseinstellungen">
 			    <field name="plg_cntools_e24d_basic_note1" type="note" description="Sollte einmal der Dienst des Datenbereitsstellers nicht zur Verfügung stehen, werden die hier und in den weiteren Tabs hinterlegten Text genutzt." />
+
+			    <field name="plg_cntools_e24d_basic_acknowledge" type="note" description="Mir ist bewusst, dass die Verwendung der generierten Dokumente auf eigene Gefahr und eigenes Risiko erfolgt. Eine Haftung für eventuelle Fehler wird nicht übernommen." />
+				<field name="plg_cntools_e24d_acknowledge" type="radio" default="0" class="btn-group btn-group-yesno" label="Bestätigung" description="Mir ist bewusst, dass die Verwendung der generierten Dokumente auf eigene Gefahr und eigenes Risiko erfolgt. Eine Haftung für eventuelle Fehler wird nicht übernommen.">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
 				<field name="plg_cntools_e24d_fallback" width="400" height="300" type="editor" buttons="true" label="Rückfallsebenentext (Anfang):" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 				<field name="plg_cntools_e24d_fallback_bottom" type="editor" buttons="true" label="Rückfallsebenentext (Ende):" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
-				<field name="basic_hidden1" type="hidden" default="" />
+				<field name="basic_hiddenlast" type="hidden" default="" />
 			</fieldset>
 			<fieldset name="standard" label="Disclaimer">
 				<field name="plg_cntools_e24d_fallback_standard" type="editor" buttons="true" label="Rückfallsebenentext" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
@@ -169,14 +185,53 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 			<fieldset name="privacy" label="Datenschutzerklärung">
 				<field name="plg_cntools_e24d_fallback_privacy" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
-			<fieldset name="facebook" label="Facebook">
-				<field name="plg_cntools_e24d_fallback_facebook" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			<fieldset name="cookies" label="Cookies">
+				<field name="plg_cntools_e24d_fallback_cookies" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="serverlogfiles" label="Server-Log-Dateien">
+				<field name="plg_cntools_e24d_fallback_serverlogfiles" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="contactform" label="Kontaktformular">
+				<field name="plg_cntools_e24d_fallback_contactform" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="newsletter" label="Newsletter">
+				<field name="plg_cntools_e24d_fallback_newsletter" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 			<fieldset name="analytics" label="Google Analytics">
 				<field name="plg_cntools_e24d_fallback_analytics" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
+			<fieldset name="etracker" label="etracker">
+				<field name="plg_cntools_e24d_fallback_etracker" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="piwik" label="Piwik">
+				<field name="plg_cntools_e24d_fallback_piwik" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="facebook" label="Facebook">
+				<field name="plg_cntools_e24d_fallback_facebook" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="twitter" label="Twitter">
+				<field name="plg_cntools_e24d_fallback_twitter" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
 			<fieldset name="plusone" label="Google +1">
 				<field name="plg_cntools_e24d_fallback_plusone" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="instagram" label="Instagram">
+				<field name="plg_cntools_e24d_fallback_instagram" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="linkedin" label="Linkedin">
+				<field name="plg_cntools_e24d_fallback_linkedin" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="pinterest" label="Pinterest">
+				<field name="plg_cntools_e24d_fallback_pinterest" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="xing" label="Xing">
+				<field name="plg_cntools_e24d_fallback_xing" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="tumblr" label="Tumblr">
+				<field name="plg_cntools_e24d_fallback_tumblr" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="youtube" label="YouTube">
+				<field name="plg_cntools_e24d_fallback_youtube" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 <!--
 			<fieldset name="adsense" label="Google Adsense">
@@ -188,53 +243,19 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 				<field name="plg_cntools_e24d_fallback_remarketing" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 -->
-			<fieldset name="etracker" label="etracker">
-				<field name="plg_cntools_e24d_fallback_etracker" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
-			</fieldset>
-			<fieldset name="twitter" label="Twitter">
-				<field name="plg_cntools_e24d_fallback_twitter" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
-			</fieldset>
-			<fieldset name="xing" label="Xing">
-				<field name="plg_cntools_e24d_fallback_xing" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
-			</fieldset>
-			<fieldset name="instagram" label="Instagram">
-				<field name="plg_cntools_e24d_fallback_instagram" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
-			</fieldset>
-			<fieldset name="linkedin" label="Linkedin">
-				<field name="plg_cntools_e24d_fallback_linkedin" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
-			</fieldset>
-			<fieldset name="pinterest" label="Pinterest">
-				<field name="plg_cntools_e24d_fallback_pinterest" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
-			</fieldset>
-			<fieldset name="tumblr" label="Tumblr">
-				<field name="plg_cntools_e24d_fallback_tumblr" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
-			</fieldset>
 <!--
 			<fieldset name="amazon" label="Amazon Partnerprogramm">
 				<field name="plg_cntools_e24d_fallback_amazon" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 -->
-			<fieldset name="infodelete" label="Auskunft, Löschung, Sperrung">
-				<field name="plg_cntools_e24d_fallback_infodelete" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
-			</fieldset>
-			<fieldset name="serverlogfiles" label="Server-Log-Dateien">
-				<field name="plg_cntools_e24d_fallback_serverlogfiles" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
-			</fieldset>
-			<fieldset name="cookies" label="Cookies">
-				<field name="plg_cntools_e24d_fallback_cookies" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
-			</fieldset>
-			<fieldset name="contactform" label="Kontaktformular">
-				<field name="plg_cntools_e24d_fallback_contactform" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
-			</fieldset>
-			<fieldset name="advertemail" label="Werbe-E-Mails">
-				<field name="plg_cntools_e24d_fallback_advertemail" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
-			</fieldset>
-			<fieldset name="newsletter" label="Newsletter">
-				<field name="plg_cntools_e24d_fallback_newsletter" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
-			</fieldset>
 <!--			
 			<fieldset name="registration" label="Nutzerregistrierung">
 				<field name="plg_cntools_e24d_fallback_registration" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+-->
+<!--
+			<fieldset name="dataprocessing" label="Datenschutzerklärung zum Verarbeiten von Kunden- und Vertragsdaten">
+				<field name="plg_cntools_e24d_fallback_dataprocessing" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 -->
 <!--
@@ -247,11 +268,12 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 				<field name="plg_cntools_e24d_fallback_onlinecontracts" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 -->
-<!--
-			<fieldset name="dataprocessing" label="Datenschutzerklärung zum Verarbeiten von Kunden- und Vertragsdaten">
-				<field name="plg_cntools_e24d_fallback_dataprocessing" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			<fieldset name="infodelete" label="Auskunft, Löschung, Sperrung">
+				<field name="plg_cntools_e24d_fallback_infodelete" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
--->
+			<fieldset name="advertemail" label="Werbe-E-Mails">
+				<field name="plg_cntools_e24d_fallback_advertemail" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
 			<fieldset name="error" label="Errorreporting">
 				<field name="plg_cntools_e24d_erroremail" type="email" label="Fehleremailadresse:" description="Hinterlegen Sie hier eine Emailadresse, an welche eine Meldung gesendet werden soll, wenn die On-The-Fly-Datenermittlung nicht funktioniert hat. Beachten Sie bitte, dass Sie bei jedem Aufruf eines Artikels wo dieses Plug-In genutzt wird je Integrationstext '{ERecht24Datenschutz}' ein Email erhalten! " required="false" size="30" validate="email" />
 				<field name="plg_cntools_e24d_erroremail_subject" type="text" label="Emailbetreff:" description="Betreff der Fehlermail" required="false" size="30" />
