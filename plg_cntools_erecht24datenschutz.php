@@ -112,8 +112,7 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 			$http = JHttpFactory::getHttp(); 
 			try
 			{
-//				$lURL = 'http://www.e-recht24.de/plugins/content/disclaimermaker/assets/dmaker.php?acknowledge='.$this->params->get('plg_cntools_e24d_acknowledge', '0').$phrase;
-				$lURL = 'http://127.0.0.1/sctt/plugins/content/plg_cntools_erecht24datenschutz/assets/piwik.txt';
+				$lURL = 'http://www.e-recht24.de/plugins/content/disclaimermaker/assets/dmaker.php?acknowledge='.$this->params->get('plg_cntools_e24d_acknowledge', '0').$phrase;
 				$response = $http->get($lURL, null, $this->params->get('plg_cntools_e24d_timeout', 6));
 				$stringJSONFull = $response->body;
 			}
