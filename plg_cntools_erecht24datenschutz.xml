@@ -2,12 +2,12 @@
 <extension type="plugin" version="3.0" group="content" method="upgrade">
 	<name>Content - CNTools - Integration E-Recht24 Haftungsausschluss und Datenschutzbestimmung</name>
 	<author>CN-Tools | Clemens Neubauer</author>
-	<creationDate>2015-12-23</creationDate>
-	<copyright>Copyright 2014 (C) Clemens Neubauer. All rights reserved.</copyright>
+	<creationDate>2016-08-17</creationDate>
+	<copyright>Copyright 2016 (C) Clemens Neubauer. All rights reserved.</copyright>
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
 	<authorEmail>cn-tools@gmx.at</authorEmail>
 	<authorUrl>https://github.com/cn-tools/</authorUrl>
-	<version>0.0.8</version>
+	<version>0.0.9</version>
 	
 	<description>
 		<![CDATA[<p>Mit diesem Joomla! Plug-In integrieren Sie auf einfachste Art &amp; Weise einen Haftungsausschluss und/oder eine Datenschutzerklärung in einem Artikel Ihrer Wahl. Die Daten werden dabei "on-the-fly" von der Homepage <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a> geladen.</p>
@@ -66,7 +66,7 @@
     </tr>
     <tr>
       <td>Datenschutzerklärung für Piwik:</td>
-      <td>piwik=1</td>
+      <td>piwik=1<br/>ACHTUNG: Es sind weitere Einstellungen im entsprechenden Bereich notwendig!</br></td>
     </tr>
     <tr>
       <td>Datenschutzerklärung für Facebook:</td>
@@ -158,6 +158,7 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 		<filename plugin="plg_cntools_erecht24datenschutz">plg_cntools_erecht24datenschutz.php</filename>
 		<filename>index.html</filename>
 		<folder>images</folder>
+		<folder>assets</folder>
 	</files>
 
 	<updateservers>
@@ -175,6 +176,7 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 					<option value="1">JYES</option>
 				</field>
 
+				<field name="plg_cntools_e24d_timeout" type="integer" default="6" label="Timeout" description="Definieren Sie das Timeout bei der Datenabfrage von e-recht24.de. Standard ist der Wert 6" first="1" last="10" step="1" />
 				<field name="plg_cntools_e24d_fallback" width="400" height="300" type="editor" buttons="true" label="Rückfallsebenentext (Anfang):" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 				<field name="plg_cntools_e24d_fallback_bottom" type="editor" buttons="true" label="Rückfallsebenentext (Ende):" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 				<field name="basic_hiddenlast" type="hidden" default="" />
@@ -204,6 +206,38 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 				<field name="plg_cntools_e24d_fallback_etracker" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 			<fieldset name="piwik" label="Piwik">
+				<field name="plg_cntools_e24d_piwik_opt_out_link" type="url" label="URL:" description="Hinterlegen Sie hier die URL welche Sie in den Einstellungen von Piwik für Opt-Out erhalten" required="false" />
+				<field name="plg_cntools_e24d_piwik_opt_out_link_note" type="note" description="Details zu den Einstellungen bzgl. Opt-Out von Piwik erhalten Sie unter http://piwik.org/docs/privacy" required="false" />
+
+				<field name="plg_cntools_e24d_piwik_tag" type="radio" default="p" class="btn-group btn-group-yesno" label="TAG-Auswahl" description="Wählen Sie mit welchem HTML-Tag das Piwik-Opt-Out-iFrame umschlossen werden soll">
+					<option value="p">P-Tag</option>
+					<option value="div">DIV-Tag</option>
+				</field>
+
+				<field name="plg_cntools_e24d_piwik_hor_type" type="radio" default="%" class="btn-group btn-group-yesno" label="Breite in:" description="">
+					<option value="%">Prozent</option>
+					<option value="px">Pixel</option>
+				</field>
+				<field name="plg_cntools_e24d_piwik_hor_size" type="text" default="90" label="Breite:" description="" required="false" size="30" />
+
+				<field name="plg_cntools_e24d_piwik_ver_type" type="radio" default="auto" class="btn-group btn-group-yesno" label="Höhe in" description="">
+					<option value="auto">Automatisch</option>
+					<option value="%">Prozent</option>
+					<option value="px">Pixel</option>
+				</field>
+				<field name="plg_cntools_e24d_piwik_ver_size" type="text" default="200" label="Höhe:" description="" required="false" size="30" />
+				<field name="plg_cntools_e24d_piwik_ver_type_note" showon="plg_cntools_e24d_piwik_ver_type:auto" type="note" description="Der unter Höhe eingetragenen Wert wird als Rückfallsebene in Pixel genutzt, wenn die automatische Höhenanpassung nicht funktioniert" required="false" />
+
+				<field name="plg_cntools_e24d_piwik_border" type="radio" default="0" class="btn-group btn-group-yesno" label="Rahmen bei iFrame" description="Soll um das IFrame ein Rahmen angezeigt werden?">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="plg_cntools_e24d_piwik_language" type="radio" default="1" class="btn-group btn-group-yesno" label="Sprache" description="Soll die vom User gewählte Sprache für das Opt-Out von Piwik genutzt werden?">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
 				<field name="plg_cntools_e24d_fallback_piwik" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 			<fieldset name="facebook" label="Facebook">
@@ -275,9 +309,16 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 				<field name="plg_cntools_e24d_fallback_advertemail" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 			<fieldset name="error" label="Errorreporting">
-				<field name="plg_cntools_e24d_erroremail" type="email" label="Fehleremailadresse:" description="Hinterlegen Sie hier eine Emailadresse, an welche eine Meldung gesendet werden soll, wenn die On-The-Fly-Datenermittlung nicht funktioniert hat. Beachten Sie bitte, dass Sie bei jedem Aufruf eines Artikels wo dieses Plug-In genutzt wird je Integrationstext '{ERecht24Datenschutz}' ein Email erhalten! " required="false" size="30" validate="email" />
-				<field name="plg_cntools_e24d_erroremail_subject" type="text" label="Emailbetreff:" description="Betreff der Fehlermail" required="false" size="30" />
-				<field name="plg_cntools_e24d_erroremail_body" type="textarea" label="Emailtext:" description="Text der Fehlermail" rows="3" cols="40"/>
+				<field name="plg_cntools_e24d_erroremail_dosend" type="radio" default="1" class="btn-group btn-group-yesno" label="Fehlermail" description="Soll ein EMail versendet werden, wenn die On-The-Fly-Datenermittlung nicht funktioniert hat?">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="plg_cntools_e24d_erroremail_dosend_note" showon="plg_cntools_e24d_erroremail_dosend:1" type="note" description="Beachten Sie bitte, dass Sie bei jedem Aufruf eines Artikels/Moduls wo dieses Plug-In genutzt wird und je Integrationstext '{ERecht24Datenschutz}' ein Email erhalten!" required="false" />
+
+				<field name="plg_cntools_e24d_erroremail" showon="plg_cntools_e24d_erroremail_dosend:1" type="email" label="Fehleremailadresse:" description="Hinterlegen Sie hier eine Emailadresse, an welche eine Meldung gesendet werden soll, wenn die On-The-Fly-Datenermittlung nicht funktioniert hat." required="false" size="30" validate="email" />
+				<field name="plg_cntools_e24d_erroremail_subject" showon="plg_cntools_e24d_erroremail_dosend:1" type="text" label="Emailbetreff:" description="Betreff der Fehlermail" required="false" size="30" />
+				<field name="plg_cntools_e24d_erroremail_body" showon="plg_cntools_e24d_erroremail_dosend:1" type="textarea" label="Emailtext:" description="Text der Fehlermail" rows="3" cols="40"/>
 				<field name="error_hidden1" type="hidden" default="" />
 			</fieldset>
 		</fields>

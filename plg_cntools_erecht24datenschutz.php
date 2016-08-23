@@ -22,21 +22,49 @@ jimport('joomla.plugin.plugin');
 JHtml::_('jquery.framework');
 
 class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
+	var $_doAddHinweisMessage;
+	var $_doAddPiwikMessage;
 	//------------------------------------------------------------------------
 	function plgContentPlg_CNTools_ERecht24Datenschutz( &$subject, $config ){
 		parent::__construct( $subject, $config );
+		$this->_doAddHinweisMessage = true;
+		$this->_doAddPiwikMessage = true;
 	}
 	//------------------------------------------------------------------------
 	function onContentPrepare($context, &$article, &$params, $page = 0){
 		$regex = "#{ERecht24Datenschutz\b(.*?)\}(.*?){/ERecht24Datenschutz}#s";
-
-		$article->text = preg_replace_callback( $regex, array('plgContentPlg_CNTools_ERecht24Datenschutz', 'render'), $article->text, -1, $count );
+		$article->text = preg_replace_callback($regex, array('plgContentPlg_CNTools_ERecht24Datenschutz', 'render'), $article->text, -1, $count );
+	}
+	/*---------------------------- onContentAfterSave ----------------------------*/
+	public function onExtensionBeforeSave($context, $table, $isNew)
+	{
+		$lResult = true;
+		if (($table->enabled == 1) and ($table->element == 'plg_cntools_erecht24datenschutz'))
+		{
+			$params = json_decode($table->params);
+			if ($params->plg_cntools_e24d_acknowledge != '1')
+			{
+				$table->_errors[] = 'Damit das Plug-In ordnungsgemäss funktioniert, kontollieren Sie bitte die Einstellungen im Reiter \'Basiseinstellungen\' zum Punkt \'Bestätigung\'!';
+				$lResult = false;
+			} elseif (($params->plg_cntools_e24d_erroremail_dosend == '1') and ($params->plg_cntools_e24d_erroremail == ''))
+			{
+				$table->_errors[] = 'Bei aktiviertem Errorreporting muss eine gültige Emailadresse hinterlegt werden!';
+				$lResult = false;
+			}
+		}
+		
+		return $lResult;
 	}
 	//------------------------------------------------------------------------
 	function render(&$matches){
 		if ($this->params->get('plg_cntools_e24d_acknowledge', '0') != '1')
 		{
-			$lResult = "<p><strong>Bitte bestätigen Sie zuerst in den Einstellungen des Plug-In's, dass Sie die Hinweise zum Datenschutzgenerator gelesen und akzeptiert haben.</strong></p>";
+			if ($this->_doAddHinweisMessage)
+			{
+				JFactory::getApplication()->enqueueMessage('Bitte bestätigen Sie zuerst in den Einstellungen des Plug-In\'s, dass Sie die Hinweise zum Datenschutzgenerator gelesen haben und diese akzeptieren!', 'error');
+				$this->_doAddHinweisMessage = false;
+			}
+			$lResult = '';
 		} else {
 			$lValue = htmlspecialchars_decode($matches[0]);
 			$lValue = substr($lValue, 21);
@@ -66,12 +94,28 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 	function addContent($phrase) {
 		$lResult = '';
 		if ($phrase!=''){
+			$lReworkPiwik = false;
+			if (strpos($phrase, 'piwik=1') !== false)
+			{
+				if ($this->params->get('plg_cntools_e24d_piwik_opt_out_link', '') == '')
+				{
+					if ($this->_doAddPiwikMessage)
+					{
+						JFactory::getApplication()->enqueueMessage('Piwik ist aktiv, jedoch sind die Einstellungen im Plug-In für die automatische Generierung der Datenschutzerklärung mit Hilfe von eRecht24.de nicht vollständig!<br />Bitte hinterlegen Sie im Reiter \'Piwik\' die notwendige URL für Opt-Out!', 'warning');
+						$this->_doAddPiwikMessage = false;
+					}
+				} else {
+					$lReworkPiwik = true;
+				}
+			}
+
 			$http = JHttpFactory::getHttp(); 
 			try
 			{
-				$response = $http->get('http://www.e-recht24.de/plugins/content/disclaimermaker/assets/dmaker.php?acknowledge='.$this->params->get('plg_cntools_e24d_acknowledge', '0').$phrase, null, 6);
-				
-				$stringJSONFull = $response->body; 
+//				$lURL = 'http://www.e-recht24.de/plugins/content/disclaimermaker/assets/dmaker.php?acknowledge='.$this->params->get('plg_cntools_e24d_acknowledge', '0').$phrase;
+				$lURL = 'http://127.0.0.1/sctt/plugins/content/plg_cntools_erecht24datenschutz/assets/piwik.txt';
+				$response = $http->get($lURL, null, $this->params->get('plg_cntools_e24d_timeout', 6));
+				$stringJSONFull = $response->body;
 			}
 			catch (Exception $e)
 			{
@@ -123,15 +167,18 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 					$lResult = '<p>Der Haftungsausschluss und/oder die Datenschutzerklärung von <a target="_blank" href="http://www.e-recht24.de">www.e-recht24.de</a> steht derzeit nicht zur Verfügung!<br />Sollte dieses Problem länger bestehen, kontaktieren Sie bitte den Betreiber dieser Homepage!</p>';
 				}
 
-				$lErrorEmail = $this->params->get('plg_cntools_e24d_erroremail');
-				if ($lErrorEmail != ''){
-					$config = JFactory::getConfig();
-					JFactory::getMailer()->sendMail($config->get('mailfrom'), 
-													$config->get('fromname'), 
-													$lErrorEmail, 
-													$this->params->get('plg_cntools_e24d_erroremail_subject').' ('.$config->get('sitename').')', 
-													$this->params->get('plg_cntools_e24d_erroremail_body')
-													);
+				if ($this->params->get('plg_cntools_e24d_erroremail_dosend', '1') == '1')
+				{
+					$lErrorEmail = $this->params->get('plg_cntools_e24d_erroremail', '');
+					if ($lErrorEmail != ''){
+						$config = JFactory::getConfig();
+						JFactory::getMailer()->sendMail($config->get('mailfrom'), 
+														$config->get('fromname'), 
+														$lErrorEmail, 
+														$this->params->get('plg_cntools_e24d_erroremail_subject').' ('.$config->get('sitename').')', 
+														$this->params->get('plg_cntools_e24d_erroremail_body')
+														);
+					}
 				}
 			} else {
 				$stringJSONReady = json_decode($stringJSONFull);
@@ -143,6 +190,63 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 					}
 					$lResult .= $lValue;
 				}
+			}
+			
+			//PIWIK-IFRAME rework
+			/* 
+			<p><em><strong><a style="color:#F00;" href="http://piwik.org/docs/privacy/" rel="nofollow" target="_blank">[Hier PIWIK iframe-Code einfügen] (Klick für die Anleitung)</a></strong></em></p>
+			*/
+			if ($lReworkPiwik and (strpos($lResult, 'piwik.org') !== false))
+			{
+				$lPiwikUrl = $this->params->get('plg_cntools_e24d_piwik_opt_out_link');
+				$lTag = $this->params->get('plg_cntools_e24d_piwik_tag', 'p');
+
+				if (!class_exists ('simple_html_dom', false/*$autoload*/))
+				{
+					include_once('plugins/content/plg_cntools_erecht24datenschutz/assets/simple_html_dom.php');
+				}
+
+				if ($this->params->get('plg_cntools_e24d_piwik_language', '1') == '1')
+				{
+					$lang = JFactory::getLanguage();
+					$langCode = '&language=' . mb_strtolower(substr($lang->getTag(), 0, 2));
+					if (strpos($lPiwikUrl, $langCode) === false)
+					{
+						$lPiwikUrl .= $langCode;
+					}
+				}
+
+				// load erecht24 data
+				$lWorkDoc = new simple_html_dom();
+				$lWorkDoc->load($lResult);
+
+				// Find all p-tags
+				$lPiwikCount = 0;
+				foreach ($lWorkDoc->find('p') as $pelem)
+				{
+					// find a-tag with href to piwik
+					$piwiklink = $pelem->find('a[href*=piwik.org]');
+					if (isset($piwiklink) and (count($piwiklink)>>0))
+					{
+						$lPiwikCount = $lPiwikCount + 1;
+						$lBorder = ' frameborder="' . $this->params->get('plg_cntools_e24d_piwik_border', '0') . '"';
+						
+						if ($this->params->get('plg_cntools_e24d_piwik_ver_type', 'auto') != 'auto')
+						{
+							$lHeight = ' height="' . $this->params->get('plg_cntools_e24d_piwik_ver_size', '200') . $this->params->get('plg_cntools_e24d_piwik_ver_type', 'px') . '"';
+						} else {
+							$document = JFactory::getDocument();
+							$document->addScriptDeclaration('function plg_cntool_piwik_resizeIframe(obj){obj.style.height = obj.contentWindow.document.body.scrollHeight + \'px\';}');
+							$lHeight = ' height="' . $this->params->get('plg_cntools_e24d_piwik_ver_size', '200') . 'px" onload="plg_cntool_piwik_resizeIframe(this);"';
+						}
+
+						$lText = '<' . $lTag . ' id=plg_cntools_e24d_piwik' . $lPiwikCount . '" class="plg_cntools_e24d_piwik"><iframe' . $lBorder . ' width="' . $this->params->get('plg_cntools_e24d_piwik_hor_size', '90') . $this->params->get('plg_cntools_e24d_piwik_hor_type', '%') . '"' . $lHeight . ' src="' . $lPiwikUrl . '" ></iframe></' . $lTag . '>';
+						$pelem->outertext = $lText;
+					}
+				}
+				$lResult = $lWorkDoc->outertext;
+				$lWorkDoc->clear(); 
+				unset($lWorkDoc);
 			}
 		}
 		return $lResult;
