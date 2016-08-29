@@ -31,19 +31,14 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 		$this->_doAddPiwikMessage = true;
 	}
 	//-------------------------------------------------------------------------
-	private function onDebugWrite($msg, $typ = 'warning')
-	{
-/*
-		if (($msg != '') and ($this->params->get('plg_cntools_e24d_debug_yesno', '0') == '1'))
-		{
-			JFactory::getApplication()->enqueueMessage($msg , $typ);
-		}
-*/
-	}
-	//-------------------------------------------------------------------------
 	function onContentPrepare($context, &$article, &$params, $page = 0){
 		$regex = "#{ERecht24Datenschutz\b(.*?)\}(.*?){/ERecht24Datenschutz}#s";
-		$article->text = preg_replace_callback($regex, array('plgContentPlg_CNTools_ERecht24Datenschutz', 'render'), $article->text, -1, $count );
+		if (is_object($article) and property_exists($article, 'text'))
+		{
+			$article->text = preg_replace_callback($regex, array('plgContentPlg_CNTools_ERecht24Datenschutz', 'render'), $article->text, -1, $count );
+		} else {
+			$article = preg_replace_callback($regex, array('plgContentPlg_CNTools_ERecht24Datenschutz', 'render'), $article, -1, $count );
+		}
 	}
 	/*-------------------------- onContentAfterSave -------------------------*/
 	public function onExtensionBeforeSave($context, $table, $isNew)
@@ -125,7 +120,6 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 			try
 			{
 				$lURL = $this->params->get('plg_cntools_e24d_protokoll', 'https') . '://www.e-recht24.de/plugins/content/disclaimermaker/assets/dmaker.php?acknowledge='.$this->params->get('plg_cntools_e24d_acknowledge', '0').$phrase;
-				$this->onDebugWrite('URL: ' . $lURL);
 				$response = $http->get($lURL, null, $this->params->get('plg_cntools_e24d_timeout', 6));
 				if (isset($response) and ($response->code == 200))
 				{
@@ -138,7 +132,6 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 			} 			
 
 			if ((!isset($stringJSONFull)) or ($stringJSONFull[0]!='{')){
-				$this->onDebugWrite('no live-data available!');
 				$lResult = trim($this->params->get('plg_cntools_e24d_fallback'));
 				if ($lResult<>''){
 					$lResult = '<p>'.$lResult.'</p>';
@@ -197,7 +190,6 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 					}
 				}
 			} else {
-				$this->onDebugWrite('json-Data: ' . $stringJSONFull);
 				$stringJSONReady = json_decode($stringJSONFull);
 				$lResult = $stringJSONReady->{'disclaimerpreview'};
 				$lValue = $stringJSONReady->{'privacypreview'};
@@ -209,7 +201,14 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 				}
 			}
 			
-			//PIWIK-IFRAME rework
+			//-- link target rework -------------------------------------------
+			if ($this->params->get('plg_cntools_e24d_target', '1') == '1')
+			{
+				$regex = "#(<a)(.*?)(<\\/a>)#is";
+				$lResult = preg_replace_callback($regex, array('plgContentPlg_CNTools_ERecht24Datenschutz', 'renderTarget'), $lResult);
+			}
+			
+			//-- PIWIK-IFRAME rework ------------------------------------------
 			/* 
 			<p><em><strong><a style="color:#F00;" href="http://piwik.org/docs/privacy/" rel="nofollow" target="_blank">[Hier PIWIK iframe-Code einfügen] (Klick für die Anleitung)</a></strong></em></p>
 			*/
@@ -264,6 +263,24 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 				$lResult = $lWorkDoc->outertext;
 				$lWorkDoc->clear(); 
 				unset($lWorkDoc);
+			}
+		}
+		return $lResult;
+	}
+	
+	//-- renderTarget ---------------------------------------------------------
+	function renderTarget(&$matches)
+	{
+		$lResult = $matches[0];
+		if (!strpos($lResult, ' target='))
+		{
+			if (strpos($lResult, ' href="'))
+			{
+				$lResult = str_ireplace(' href="', ' target="_blank" href="', $lResult);
+			} 
+			else if (strpos($lResult, " href='")) 
+			{
+				$lResult = str_ireplace(" href='", " target='_blank'  href='", $lResult);
 			}
 		}
 		return $lResult;
