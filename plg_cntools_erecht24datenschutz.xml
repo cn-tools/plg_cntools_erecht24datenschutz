@@ -7,7 +7,7 @@
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
 	<authorEmail>cn-tools@gmx.at</authorEmail>
 	<authorUrl>https://github.com/cn-tools/</authorUrl>
-	<version>0.0.13</version>
+	<version>0.0.14</version>
 	
 	<description>
 		<![CDATA[<p>Mit diesem Joomla! Plug-In integrieren Sie auf einfachste Art &amp; Weise einen Haftungsausschluss und/oder eine Datenschutzerklärung in einem Artikel Ihrer Wahl. Die Daten werden dabei "on-the-fly" von der Homepage <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a> geladen.</p>
@@ -315,8 +315,8 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 			<fieldset name="infodelete" label="Auskunft, Löschung, Sperrung">
 				<field name="plg_cntools_e24d_fallback_infodelete" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
-			<fieldset name="advertemail" label="Werbe-E-Mails">
-				<field name="plg_cntools_e24d_fallback_advertemail" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			<fieldset name="advertemails" label="Werbe-E-Mails">
+				<field name="plg_cntools_e24d_fallback_advertemails" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 			<fieldset name="error" label="Errorreporting">
 				<field name="plg_cntools_e24d_erroremail_dosend" type="radio" default="1" class="btn-group btn-group-yesno" label="Fehlermail" description="Soll ein EMail versendet werden, wenn die On-The-Fly-Datenermittlung nicht funktioniert hat?">
