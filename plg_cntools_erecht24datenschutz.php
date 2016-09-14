@@ -23,16 +23,33 @@ JHtml::_('jquery.framework');
 
 class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 	var $_doAddHinweisMessage;
+	var $_doPiwikRework;
 	var $_doAddPiwikMessage;
+	var $_doReworkTarget;
 	//-------------------------------------------------------------------------
 	function plgContentPlg_CNTools_ERecht24Datenschutz( &$subject, $config ){
 		parent::__construct( $subject, $config );
 		$this->_doAddHinweisMessage = true;
+		$this->_doPiwikRework = true;
 		$this->_doAddPiwikMessage = true;
+		$this->_doReworkTarget = true;
 	}
 	//-------------------------------------------------------------------------
 	function onContentPrepare($context, &$article, &$params, $page = 0){
 		$regex = "#{ERecht24Datenschutz\b(.*?)\}(.*?){/ERecht24Datenschutz}#s";
+		
+		if (is_object($params))
+		{
+			if  (property_exists($params, 'plg_cntools_e24d_dopiwikrework'))
+			{
+				$this->_doPiwikRework = ($params->plg_cntools_e24d_dopiwikrework != '0');
+			}
+			if  (property_exists($params, 'plg_cntools_e24d_target'))
+			{
+				$this->_doReworkTarget = ($params->plg_cntools_e24d_target != '0');
+			}
+		}
+
 		if (is_object($article) and property_exists($article, 'text'))
 		{
 			$article->text = preg_replace_callback($regex, array('plgContentPlg_CNTools_ERecht24Datenschutz', 'render'), $article->text, -1, $count );
@@ -100,7 +117,7 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 		$lResult = '';
 		if ($phrase!=''){
 			$lReworkPiwik = false;
-			if (strpos($phrase, 'piwik=1') !== false)
+			if ($this->_doPiwikRework and strpos($phrase, 'piwik=1') !== false)
 			{
 				if ($this->params->get('plg_cntools_e24d_piwik_opt_out_link', '') == '')
 				{
@@ -202,7 +219,7 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 			}
 			
 			//-- link target rework -------------------------------------------
-			if ($this->params->get('plg_cntools_e24d_target', '1') == '1')
+			if ($this->_doReworkTarget and $this->params->get('plg_cntools_e24d_target', '1') == '1')
 			{
 				$regex = "#(<a)(.*?)(<\\/a>)#is";
 				$lResult = preg_replace_callback($regex, array('plgContentPlg_CNTools_ERecht24Datenschutz', 'renderTarget'), $lResult);
