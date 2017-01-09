@@ -27,7 +27,7 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 	var $_doAddPiwikMessage;
 	var $_doReworkTarget;
 	//-------------------------------------------------------------------------
-	function plgContentPlg_CNTools_ERecht24Datenschutz( &$subject, $config ){
+	public function __construct(&$subject, $config)
 		parent::__construct( $subject, $config );
 		$this->_doAddHinweisMessage = true;
 		$this->_doPiwikRework = true;
