@@ -7,7 +7,7 @@
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
 	<authorEmail>cn-tools@gmx.at</authorEmail>
 	<authorUrl>https://github.com/cn-tools/</authorUrl>
-	<version>0.0.14</version>
+	<version>0.0.15</version>
 	
 	<description>
 		<![CDATA[<p>Mit diesem Joomla! Plug-In integrieren Sie auf einfachste Art &amp; Weise einen Haftungsausschluss und/oder eine Datenschutzerklärung in einem Artikel Ihrer Wahl. Die Daten werden dabei "on-the-fly" von der Homepage <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a> geladen.</p>
@@ -61,12 +61,24 @@
       <td>analytics=1</td>
     </tr>
     <tr>
+      <td>Datenschutzerklärung für Google Analytics Auftragsdatenverarbeitung:</td>
+      <td>analyticsadv=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Google Analytics IP-Anonymisierung:</td>
+      <td>analyticsanonymousip=1</td>
+    </tr>
+    <tr>
       <td>Datenschutzerklärung für etracker:</td>
       <td>etracker=1</td>
     </tr>
     <tr>
       <td>Datenschutzerklärung für Piwik:</td>
       <td>piwik=1<br/>ACHTUNG: Es sind weitere Einstellungen im entsprechenden Bereich notwendig!</br></td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Wordpress Stats:</td>
+      <td>wordpressstats=1</td>
     </tr>
     <tr>
       <td>Datenschutzerklärung für Facebook:</td>
@@ -92,6 +104,18 @@
       <td>Datenschutzerklärung für Pinterest:</td>
       <td>pinterest=1</td>
     </tr>
+    <tr style="color:#888888">
+      <td>Datenschutzerklärung für Google Web Fonts</td>
+      <td>googlewebfonts=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für SoundCloud:</td>
+      <td>soundcloud=1</td>
+    </tr>
+    <tr style="color:#888888">
+      <td>Datenschutzerklärung für Google Maps:</td>
+      <td>googlemaps=1</td>
+    </tr>
     <tr>
       <td>Datenschutzerklärung für Xing:</td>
       <td>xing=1</td>
@@ -106,11 +130,11 @@
     </tr>
     <tr style="color:#888888">
       <td>Datenschutzerklärung für Google Adsense:</td>
-      <td>adsense=1</td>
+      <td>googleadsense=1</td>
     </tr>
     <tr style="color:#888888">
       <td>Datenschutzerklärung für Google Analytics Remarketing:</td>
-      <td>remarketing=1</td>
+      <td>googleremarketing=1</td>
     </tr>
     <tr style="color:#888888">
       <td>Datenschutzerklärung für Amazon Partnerprogramm:</td>
@@ -119,6 +143,26 @@
     <tr style="color:#888888">
       <td>Datenschutzerklärung für Nutzerregistrierung:</td>
       <td>registration=1</td>
+    </tr>
+    <tr>
+      <td>Datenschutzerklärung für Kommentarfunktion:</td>
+      <td>commentsnoemail=1</td>
+    </tr>
+    <tr>
+      <td>Kommentarfunktion mit Angabe der E-Mail-Adresse:</td>
+      <td>commentsemail=1</td>
+    </tr>
+    <tr>
+      <td>Kommentarfunktion mit Speicherung der IP-Adresse:</td>
+      <td>commentsip=1</td>
+    </tr>
+    <tr>
+      <td>Kommentarfunktion mit Abonnieren von Kommentaren:</td>
+      <td>commentssubscription=1</td>
+    </tr>
+    <tr>
+      <td>SSL-Verschlüsselung der Webseite:</td>
+      <td>ssl=1</td>
     </tr>
     <tr style="color:#888888">
       <td>Datenschutzerklärung zum Verarbeiten von Kunden- und Vertragsdaten:</td>
@@ -131,6 +175,10 @@
     <tr style="color:#888888">
       <td>Datenübermittlung - Dienstleister, die online Verträge schließen (ohne Warenversand):</td>
       <td>onlinecontracts=1</td>
+    </tr>
+    <tr style="color:#888888">
+      <td>Verschlüsselter Zahlungsverkehr:</td>
+      <td>sslpayment=1</td>
     </tr>
     <tr>
       <td>Hinweis zu Auskunft, Löschung, Sperrung:</td>
@@ -211,6 +259,8 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 			</fieldset>
 			<fieldset name="analytics" label="Google Analytics">
 				<field name="plg_cntools_e24d_fallback_analytics" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+				<field name="plg_cntools_e24d_fallback_analyticsadv" type="editor" buttons="true" label="Rückfallsebenentext (Auftragsdatenverarbeitung):" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+				<field name="plg_cntools_e24d_fallback_analyticsanonymousip" type="editor" buttons="true" label="Rückfallsebenentext (IP-Anonymisierung):" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 			<fieldset name="etracker" label="etracker">
 				<field name="plg_cntools_e24d_fallback_etracker" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
@@ -250,6 +300,9 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 
 				<field name="plg_cntools_e24d_fallback_piwik" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
+			<fieldset name="wordpressstats" label="Wordpress Stats">
+				<field name="plg_cntools_e24d_fallback_wordpressstats" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
 			<fieldset name="facebook" label="Facebook">
 				<field name="plg_cntools_e24d_fallback_facebook" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
@@ -268,6 +321,19 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 			<fieldset name="pinterest" label="Pinterest">
 				<field name="plg_cntools_e24d_fallback_pinterest" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
+<!--
+			<fieldset name="googlewebfonts" label="Google Web Fonts">
+				<field name="plg_cntools_e24d_fallback_googlewebfonts" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+-->
+			<fieldset name="soundcloud" label="SoundCloud">
+				<field name="plg_cntools_e24d_fallback_soundcloud" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+<!--
+			<fieldset name="googlemaps" label="Google Maps">
+				<field name="plg_cntools_e24d_fallback_googlemaps" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+-->
 			<fieldset name="xing" label="Xing">
 				<field name="plg_cntools_e24d_fallback_xing" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
@@ -278,13 +344,13 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 				<field name="plg_cntools_e24d_fallback_youtube" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 <!--
-			<fieldset name="adsense" label="Google Adsense">
-				<field name="plg_cntools_e24d_fallback_adsense" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			<fieldset name="googleadsense" label="Google Adsense">
+				<field name="plg_cntools_e24d_fallback_googleadsense" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 -->
 <!--
-			<fieldset name="remarketing" label="Google Analytics Remarketing">
-				<field name="plg_cntools_e24d_fallback_remarketing" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			<fieldset name="googleremarketing" label="Google Analytics Remarketing">
+				<field name="plg_cntools_e24d_fallback_googleremarketing" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 -->
 <!--
@@ -297,6 +363,15 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 				<field name="plg_cntools_e24d_fallback_registration" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 -->
+			<fieldset name="commentsnoemail" label="Kommentarfunktion">
+				<field name="plg_cntools_e24d_fallback_commentsnoemail" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+				<field name="plg_cntools_e24d_fallback_commentsemail" type="editor" buttons="true" label="Rückfallsebenentext (Kommentarfunktion mit Angabe der E-Mail-Adresse):" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+				<field name="plg_cntools_e24d_fallback_commentsip" type="editor" buttons="true" label="Rückfallsebenentext (Kommentarfunktion mit Speicherung der IP-Adresse):" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+				<field name="plg_cntools_e24d_fallback_commentssubscription" type="editor" buttons="true" label="Rückfallsebenentext (Kommentarfunktion mit Abonnieren von Kommentaren):" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+			<fieldset name="ssl" label="SSL-Verschlüsselung der Webseite">
+				<field name="plg_cntools_e24d_fallback_ssl" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
 <!--
 			<fieldset name="dataprocessing" label="Datenschutzerklärung zum Verarbeiten von Kunden- und Vertragsdaten">
 				<field name="plg_cntools_e24d_fallback_dataprocessing" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
@@ -310,6 +385,11 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 <!--
 			<fieldset name="onlinecontracts" label="Datenübermittlung - Dienstleister, die online Verträge schließen (ohne Warenversand)">
 				<field name="plg_cntools_e24d_fallback_onlinecontracts" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
+			</fieldset>
+-->
+<!--
+			<fieldset name="sslpayment" label="Verschlüsselter Zahlungsverkehr">
+				<field name="plg_cntools_e24d_fallback_sslpayment" type="editor" buttons="true" label="Rückfallsebenentext:" description="" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_content" required="false" />
 			</fieldset>
 -->
 			<fieldset name="infodelete" label="Auskunft, Löschung, Sperrung">

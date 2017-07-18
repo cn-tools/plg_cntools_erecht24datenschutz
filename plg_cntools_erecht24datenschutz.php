@@ -28,6 +28,7 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 	var $_doReworkTarget;
 	//-------------------------------------------------------------------------
 	public function __construct(&$subject, $config)
+	{
 		parent::__construct( $subject, $config );
 		$this->_doAddHinweisMessage = true;
 		$this->_doPiwikRework = true;
@@ -35,7 +36,8 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 		$this->_doReworkTarget = true;
 	}
 	//-------------------------------------------------------------------------
-	function onContentPrepare($context, &$article, &$params, $page = 0){
+	function onContentPrepare($context, &$article, &$params, $page = 0)
+	{
 		$regex = "#{ERecht24Datenschutz\b(.*?)\}(.*?){/ERecht24Datenschutz}#s";
 		
 		if (is_object($params))
@@ -78,7 +80,8 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 		return $lResult;
 	}
 	//------------------------------------------------------------------------
-	function render(&$matches){
+	function render(&$matches)
+	{
 		if ($this->params->get('plg_cntools_e24d_acknowledge', '0') != '1')
 		{
 			if ($this->_doAddHinweisMessage)
@@ -137,6 +140,9 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 			try
 			{
 				$lURL = $this->params->get('plg_cntools_e24d_protokoll', 'https') . '://www.e-recht24.de/plugins/content/disclaimermaker/assets/dmaker.php?acknowledge='.$this->params->get('plg_cntools_e24d_acknowledge', '0').$phrase;
+				if (JDEBUG) {
+					JFactory::getApplication()->enqueueMessage('e-recht24 debug info:<br /><a href="' . $lURL . '" target="_blank">' . $lURL . '</a>', 'notice');
+				}
 				$response = $http->get($lURL, null, $this->params->get('plg_cntools_e24d_timeout', 6));
 				if (isset($response) and ($response->code == 200))
 				{
@@ -153,7 +159,7 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 				if ($lResult<>''){
 					$lResult = '<p>'.$lResult.'</p>';
 				}
-				
+
 				$lResult .= $this->GetRueckfallText($phrase, 'standard');
 				$lResult .= $this->GetRueckfallText($phrase, 'privacy');
 				$lResult .= $this->GetRueckfallText($phrase, 'cookies');
@@ -161,24 +167,36 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 				$lResult .= $this->GetRueckfallText($phrase, 'contactform');
 				$lResult .= $this->GetRueckfallText($phrase, 'newsletter');
 				$lResult .= $this->GetRueckfallText($phrase, 'analytics');
+					$lResult .= $this->GetRueckfallText($phrase, 'analyticsadv');
+					$lResult .= $this->GetRueckfallText($phrase, 'analyticsanonymousip');
 				$lResult .= $this->GetRueckfallText($phrase, 'etracker');
 				$lResult .= $this->GetRueckfallText($phrase, 'piwik');
+				$lResult .= $this->GetRueckfallText($phrase, 'wordpressstats');
 				$lResult .= $this->GetRueckfallText($phrase, 'facebook');
 				$lResult .= $this->GetRueckfallText($phrase, 'twitter');
 				$lResult .= $this->GetRueckfallText($phrase, 'plusone');
 				$lResult .= $this->GetRueckfallText($phrase, 'instagram');
 				$lResult .= $this->GetRueckfallText($phrase, 'linkedin');
 				$lResult .= $this->GetRueckfallText($phrase, 'pinterest');
+				//$lResult .= $this->GetRueckfallText($phrase, 'googlewebfonts');
+				$lResult .= $this->GetRueckfallText($phrase, 'soundcloud');
+				//$lResult .= $this->GetRueckfallText($phrase, 'googlemaps');
 				$lResult .= $this->GetRueckfallText($phrase, 'xing');
 				$lResult .= $this->GetRueckfallText($phrase, 'tumblr');
 				$lResult .= $this->GetRueckfallText($phrase, 'youtube');
-				//$lResult .= $this->GetRueckfallText($phrase, 'adsense');
-				//$lResult .= $this->GetRueckfallText($phrase, 'remarketing');
+				//$lResult .= $this->GetRueckfallText($phrase, 'googleadsense');
+				//$lResult .= $this->GetRueckfallText($phrase, 'googleremarketing');
 				//$lResult .= $this->GetRueckfallText($phrase, 'amazon');
 				//$lResult .= $this->GetRueckfallText($phrase, 'registration');
+				$lResult .= $this->GetRueckfallText($phrase, 'commentsnoemail');
+					$lResult .= $this->GetRueckfallText($phrase, 'commentsemail');
+					$lResult .= $this->GetRueckfallText($phrase, 'commentsip');
+					$lResult .= $this->GetRueckfallText($phrase, 'commentssubscription');
+				$lResult .= $this->GetRueckfallText($phrase, 'ssl');
 				//$lResult .= $this->GetRueckfallText($phrase, 'dataprocessing');
 				//$lResult .= $this->GetRueckfallText($phrase, 'shops');
 				//$lResult .= $this->GetRueckfallText($phrase, 'onlinecontracts');
+				//$lResult .= $this->GetRueckfallText($phrase, 'sslpayment');
 				$lResult .= $this->GetRueckfallText($phrase, 'infodelete');
 				$lResult .= $this->GetRueckfallText($phrase, 'advertemails');
 				//$lResult .= $this->GetRueckfallText($phrase, 'translation_en');
