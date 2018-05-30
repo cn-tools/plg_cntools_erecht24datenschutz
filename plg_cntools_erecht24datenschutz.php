@@ -36,8 +36,25 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 		$this->_doReworkTarget = true;
 	}
 	//-------------------------------------------------------------------------
+	/*private function debug_to_console( $data )
+	{
+		$output = $data;
+		if ( is_array( $output ) )
+			$output = implode( ',', $output);
+
+		echo "<script>console.log( 'Debug Plg_CNTools_ERecht24Datenschutz: " . $output . "' );</script>";
+	}*/
+	//-------------------------------------------------------------------------
 	function onContentPrepare($context, &$article, &$params, $page = 0)
 	{
+		//-- if admin go return -----------------------------------------------
+		$app = JFactory::getApplication();
+		if($app->isAdmin() === true)
+		{
+			return;
+		}
+
+		//-- start converting -------------------------------------------------
 		$regex = "#{ERecht24Datenschutz\b(.*?)\}(.*?){/ERecht24Datenschutz}#s";
 		
 		if (is_object($params))
@@ -59,7 +76,7 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 			$article = preg_replace_callback($regex, array('plgContentPlg_CNTools_ERecht24Datenschutz', 'render'), $article, -1, $count );
 		}
 	}
-	/*-------------------------- onContentAfterSave -------------------------*/
+	//-------------------------- onContentAfterSave ---------------------------
 	public function onExtensionBeforeSave($context, $table, $isNew)
 	{
 		$lResult = true;
@@ -79,7 +96,7 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 		
 		return $lResult;
 	}
-	//------------------------------------------------------------------------
+	//-------------------------------------------------------------------------
 	function render(&$matches)
 	{
 		if ($this->params->get('plg_cntools_e24d_acknowledge', '0') != '1')
@@ -99,7 +116,7 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 
 		return $lResult;
 	}
-	//------------------------------------------------------------------------
+	//-------------------------------------------------------------------------
 	private function GetRueckfallText($phrase, $txt){
 		$param = 'plg_cntools_e24d_fallback_' + $txt;
 		$txt .= '=1';
@@ -115,18 +132,21 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 		
 		return $lResult;
 	}
-	//------------------------------------------------------------------------
+	//-------------------------------------------------------------------------
 	function addContent($phrase) {
 		$lResult = '';
 		if ($phrase!=''){
+			//change piwik to matomo
+			$phrase = str_ireplace('piwik=1', 'matomo=1', $phrase);
+
 			$lReworkPiwik = false;
-			if ($this->_doPiwikRework and strpos($phrase, 'piwik=1') !== false)
+			if ($this->_doPiwikRework and strpos($phrase, 'matomo=1') !== false)
 			{
 				if ($this->params->get('plg_cntools_e24d_piwik_opt_out_link', '') == '')
 				{
 					if ($this->_doAddPiwikMessage)
 					{
-						JFactory::getApplication()->enqueueMessage('Piwik ist aktiv, jedoch sind die Einstellungen im Plug-In für die automatische Generierung der Datenschutzerklärung mit Hilfe von eRecht24.de nicht vollständig!<br />Bitte hinterlegen Sie im Reiter \'Piwik\' die notwendige URL für Opt-Out!', 'warning');
+						JFactory::getApplication()->enqueueMessage('Matomo (vorher Piwik) ist aktiv, jedoch sind die Einstellungen im Plug-In für die automatische Generierung der Datenschutzerklärung mit Hilfe von eRecht24.de nicht vollständig!<br />Bitte hinterlegen Sie im Reiter \'Matomo\' die notwendige URL für Opt-Out!', 'warning');
 						$this->_doAddPiwikMessage = false;
 					}
 				} else {
@@ -140,6 +160,7 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 			try
 			{
 				$lURL = $this->params->get('plg_cntools_e24d_protokoll', 'https') . '://www.e-recht24.de/plugins/content/disclaimermaker/assets/dmaker.php?acknowledge='.$this->params->get('plg_cntools_e24d_acknowledge', '0').$phrase;
+//				$lURL = JURI::base().'plugins/content/plg_cntools_erecht24datenschutz/assets/piwik.txt';	
 				if (JDEBUG) {
 					JFactory::getApplication()->enqueueMessage('e-recht24 debug info:<br /><a href="' . $lURL . '" target="_blank">' . $lURL . '</a>', 'notice');
 				}
@@ -170,7 +191,7 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 					$lResult .= $this->GetRueckfallText($phrase, 'analyticsadv');
 					$lResult .= $this->GetRueckfallText($phrase, 'analyticsanonymousip');
 				$lResult .= $this->GetRueckfallText($phrase, 'etracker');
-				$lResult .= $this->GetRueckfallText($phrase, 'piwik');
+				$lResult .= $this->GetRueckfallText($phrase, 'matomo');
 				$lResult .= $this->GetRueckfallText($phrase, 'wordpressstats');
 				$lResult .= $this->GetRueckfallText($phrase, 'facebook');
 				$lResult .= $this->GetRueckfallText($phrase, 'twitter');
@@ -246,13 +267,14 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 			//-- PIWIK-IFRAME rework ------------------------------------------
 			/* 
 			<p><em><strong><a style="color:#F00;" href="http://piwik.org/docs/privacy/" rel="nofollow" target="_blank">[Hier PIWIK iframe-Code einfügen] (Klick für die Anleitung)</a></strong></em></p>
+			<p><em><strong><a style="color:#F00;" href="https://matomo.org/docs/privacy/" rel="nofollow" target="_blank">[Hier Matomo iframe-Code einfügen] (Klick für die Anleitung)</a></strong></em></p>
 			*/
-			if ($lReworkPiwik and (strpos($lResult, 'piwik.org') !== false))
+			if ($lReworkPiwik and (strpos($lResult, 'matomo.org') !== false))
 			{
 				$lPiwikUrl = $this->params->get('plg_cntools_e24d_piwik_opt_out_link');
 				$lTag = $this->params->get('plg_cntools_e24d_piwik_tag', 'p');
 
-				if (!class_exists ('simple_html_dom', false/*$autoload*/))
+				if (!class_exists('simple_html_dom', false/*$autoload*/))
 				{
 					include_once('plugins/content/plg_cntools_erecht24datenschutz/assets/simple_html_dom.php');
 				}
@@ -276,7 +298,7 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 				foreach ($lWorkDoc->find('p') as $pelem)
 				{
 					// find a-tag with href to piwik
-					$piwiklink = $pelem->find('a[href*=piwik.org]');
+					$piwiklink = $pelem->find('a[href*=matomo.org]');
 					if (isset($piwiklink) and (count($piwiklink)>>0))
 					{
 						$lPiwikCount = $lPiwikCount + 1;
@@ -287,8 +309,8 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 							$lHeight = ' height="' . $this->params->get('plg_cntools_e24d_piwik_ver_size', '200') . $this->params->get('plg_cntools_e24d_piwik_ver_type', 'px') . '"';
 						} else {
 							$document = JFactory::getDocument();
-							$document->addScriptDeclaration('function plg_cntool_piwik_resizeIframe(obj){obj.style.height = obj.contentWindow.document.body.scrollHeight + \'px\';};');
-							$lHeight = ' height="' . $this->params->get('plg_cntools_e24d_piwik_ver_size', '200') . 'px" onload="plg_cntool_piwik_resizeIframe(this);"';
+							$document->addScriptDeclaration('function plg_cntool_piwik_resizeIframe'.$lPiwikCount.'(obj){obj.style.height = obj.contentWindow.document.body.scrollHeight + 17 + \'px\';};');
+							$lHeight = ' height="' . $this->params->get('plg_cntools_e24d_piwik_ver_size', '200') . 'px" onload="plg_cntool_piwik_resizeIframe'.$lPiwikCount.'(this);"';
 						}
 
 						$lText = '<' . $lTag . ' id=plg_cntools_e24d_piwik' . $lPiwikCount . '" class="plg_cntools_e24d_piwik"><iframe' . $lBorder . ' width="' . $this->params->get('plg_cntools_e24d_piwik_hor_size', '90') . $this->params->get('plg_cntools_e24d_piwik_hor_type', '%') . '"' . $lHeight . ' src="' . $lPiwikUrl . '" ></iframe></' . $lTag . '>';

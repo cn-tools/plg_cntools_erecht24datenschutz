@@ -14,7 +14,7 @@ plg_cntools_erecht24datenschutz
   </tbody>
 </table>
 <p><strong style="color:#F00">Dieses Plug-In wird &quot;So-Wie-Es-Ist&quot; angeboten und es wird keinerlei Haftung übernommen! Jegliche Gewährleistung ist ausgeschlossen! Die Nutzung der generierten Texte/Dokumente erfolgt auf eigene Gefahr und eigenes Risiko!<br />
-  Dies gilt sowohl für den Datenbereitsteller <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a>, als auch für den Author dieses Plug-In's!<br>
+  Dies gilt sowohl für den Datenbereitsteller <a target="_blank" href="https://www.e-recht24.de/internes/tools/10568-datenschutz-generator.html">https://www.e-recht24.de/internes/tools/10568-datenschutz-generator.html</a>, als auch für den Author dieses Plug-In's!<br>
   Der Datenbereitsteller behält sich ausserdem das Recht vor, den Service der Datenbereitstellung ohne jegliche Vorankündigung einzustellen!</strong><br />
   Mit der Verwendung dieses Plug-Ins stimmen Sie diesen Bedingungen zu!</p>
 <table>
@@ -63,8 +63,8 @@ plg_cntools_erecht24datenschutz
       <td>etracker=1</td>
     </tr>
     <tr>
-      <td>Datenschutzerklärung für Piwik:</td>
-      <td>piwik=1<br/>ACHTUNG: Es sind weitere Einstellungen im entsprechenden Bereich notwendig!</br></td>
+      <td>Datenschutzerklärung für Matomo (vorher Piwik):</td>
+      <td>matomo=1<br/>ACHTUNG: Es sind weitere Einstellungen im entsprechenden Bereich notwendig!</br></td>
     </tr>
     <tr>
       <td>Datenschutzerklärung für Wordpress Stats:</td>
