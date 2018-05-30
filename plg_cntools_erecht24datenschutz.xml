@@ -267,7 +267,7 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 			</fieldset>
 			<fieldset name="piwik" label="Matomo (vorher Piwik)">
 				<field name="plg_cntools_e24d_piwik_opt_out_link" type="url" label="URL:" description="Hinterlegen Sie hier die URL welche Sie in den Einstellungen von Matomo für Opt-Out erhalten" required="false" />
-				<field name="plg_cntools_e24d_piwik_opt_out_link_note" type="note" description="Details zu den Einstellungen bzgl. Opt-Out von Matomo erhalten Sie unter http://matomo.org/docs/privacy" required="false" />
+				<field name="plg_cntools_e24d_piwik_opt_out_link_note" type="note" description="Details zu den Einstellungen bzgl. Opt-Out von Matomo erhalten Sie unter &lt;a href='http://matomo.org/docs/privacy' target='_blank'&gt;http://matomo.org/docs/privacy&lt;/a&gt;" required="false" />
 
 				<field name="plg_cntools_e24d_piwik_tag" type="radio" default="p" class="btn-group btn-group-yesno" label="TAG-Auswahl" description="Wählen Sie mit welchem HTML-Tag das Matomo-Opt-Out-iFrame umschlossen werden soll">
 					<option value="p">P-Tag</option>
