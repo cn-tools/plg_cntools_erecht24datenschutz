@@ -1,5 +1,13 @@
-plg_cntools_erecht24datenschutz
+ACHTUNG ACHTUNG ACHTUNG ACHTUNG
 ===============================
+Der Datenbereitsteller hat die Ermittlung der Daten massiv geändert und daher ist es leider nicht mehr möglich, dass dieses Plug-In eine entsprechende Datenschutzerklärung on-the-fly für Ihre Homepage generiert!
+
+Daher wird dieses Repository archiviert!
+
+ENDE ENDE ENDE ENDE ENDE ENDE
+===============================
+
+### plg_cntools_erecht24datenschutz
 <p>Mit diesem Joomla! Plug-In integrieren Sie auf einfachste Art &amp; Weise einen Haftungsausschluss und/oder eine Datenschutzerklärung in einem Artikel Ihrer Wahl. Die Daten werden dabei "on-the-fly" von der Homepage <a target="_blank" href="http://www.e-recht24.de/muster-datenschutzerklaerung.html">http://www.e-recht24.de/muster-datenschutzerklaerung.html</a> geladen.</p>
 <table width="75%">
   <tbody>
