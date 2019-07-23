@@ -308,14 +308,18 @@ class plgContentPlg_CNTools_ERecht24Datenschutz extends JPlugin{
 						{
 							$lHeight = ' height="' . $this->params->get('plg_cntools_e24d_piwik_ver_size', '200') . $this->params->get('plg_cntools_e24d_piwik_ver_type', 'px') . '"';
 						} else {
-							$document = JFactory::getDocument();
-							$document->addScriptDeclaration('function plg_cntool_piwik_resizeIframe'.$lPiwikCount.'(obj){obj.style.height = obj.contentWindow.document.body.scrollHeight + 17 + \'px\';};');
-							$lHeight = ' height="' . $this->params->get('plg_cntools_e24d_piwik_ver_size', '200') . 'px" onload="plg_cntool_piwik_resizeIframe'.$lPiwikCount.'(this);"';
+							$lHeight = ' height="' . $this->params->get('plg_cntools_e24d_piwik_ver_size', '200') . 'px" onload="plg_cntool_piwik_resizeIframe(this);"';
 						}
 
 						$lText = '<' . $lTag . ' id=plg_cntools_e24d_piwik' . $lPiwikCount . '" class="plg_cntools_e24d_piwik"><iframe' . $lBorder . ' width="' . $this->params->get('plg_cntools_e24d_piwik_hor_size', '90') . $this->params->get('plg_cntools_e24d_piwik_hor_type', '%') . '"' . $lHeight . ' src="' . $lPiwikUrl . '" ></iframe></' . $lTag . '>';
 						$pelem->outertext = $lText;
 					}
+				}
+				
+				if ($lPiwikCount>>0)
+				{
+					$document = JFactory::getDocument();
+					$document->addScriptDeclaration('function plg_cntool_piwik_resizeIframe(obj){obj.style.height = obj.contentWindow.document.body.scrollHeight + 17 + \'px\';};');
 				}
 				$lResult = $lWorkDoc->outertext;
 				$lWorkDoc->clear(); 

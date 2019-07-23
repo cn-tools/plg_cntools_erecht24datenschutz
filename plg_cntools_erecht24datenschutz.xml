@@ -286,7 +286,7 @@ Die <span style="color:#888888">GRAU</span> hinterlegten Einträge sind nur mit 
 					<option value="px">Pixel</option>
 				</field>
 				<field name="plg_cntools_e24d_piwik_ver_size" type="text" default="200" label="Höhe:" description="" required="false" size="30" />
-				<field name="plg_cntools_e24d_piwik_ver_type_note" showon="plg_cntools_e24d_piwik_ver_type:auto" type="note" description="Der unter Höhe eingetragene Wert wird als Rückfallsebene in Pixel genutzt, wenn die automatische Höhenanpassung nicht funktioniert" />
+				<field name="plg_cntools_e24d_piwik_ver_type_note" showon="plg_cntools_e24d_piwik_ver_type:auto" type="note" description="Der unter Höhe eingetragene Wert wird als Rückfallsebene in Pixel genutzt, wenn die automatische Höhenanpassung nicht funktionieren sollte" />
 
 				<field name="plg_cntools_e24d_piwik_border" type="radio" default="0" class="btn-group btn-group-yesno" label="Rahmen bei iFrame" description="Soll um das IFrame ein Rahmen angezeigt werden?">
 					<option value="0">JNO</option>
